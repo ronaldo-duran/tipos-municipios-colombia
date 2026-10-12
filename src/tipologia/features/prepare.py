@@ -91,11 +91,11 @@ def preparar(cfg: Config, datos: DatosBase, anio: int | None = None, uso: str = 
         W, winsor = winsorizar(T, p["winsorizar"]["inferior"], p["winsorizar"]["superior"])
     else:
         W, winsor = T, Winsorizacion()
-    I, mascara = imputar(W, p["imputacion"], grupos=datos.municipios["cod_dpto"], semilla=cfg.semilla,
+    imp, mascara = imputar(W, p["imputacion"], grupos=datos.municipios["cod_dpto"], semilla=cfg.semilla,
                          knn_vecinos=p["knn_vecinos"], max_iter=p["iterativa_max_iter"])
-    I = recortar_a_rango_observado(I, W)
-    escalado = ajustar_escalado(I, p["escalado"])
-    Z = escalado.aplicar(I)
+    imp = recortar_a_rango_observado(imp, W)
+    escalado = ajustar_escalado(imp, p["escalado"])
+    Z = escalado.aplicar(imp)
     dominios = {i.id: i.dominio for i in usados}
     X, pond = ponderar(Z, dominios, p["ponderacion"], p["pca_bloque_varianza"], cfg.semilla)
     idx = Z.index

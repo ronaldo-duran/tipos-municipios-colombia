@@ -8,6 +8,9 @@ from pathlib import Path
 
 import pandas as pd
 
+from tipologia.clustering.models import acuerdo, ajustar, barrido_hdbscan, gap_statistic, seleccion_k
+from tipologia.clustering.reduce import entrada_clustering, umap_2d
+from tipologia.clustering.seleccion import decidir_k
 from tipologia.config import Config
 from tipologia.data.validate import Reporte, validar_cobertura, validar_matriz_final, validar_rangos
 from tipologia.features.build import patron_faltantes
@@ -92,9 +95,56 @@ def etapa_features(cfg: Config, destino: Path) -> dict:
     return resumen
 
 
+def etapa_cluster(cfg: Config, destino: Path) -> dict:
+    """PCA, UMAP (visualización), métricas internas por algoritmo y k, gap, BIC y HDBSCAN."""
+    c = cfg["clustering"]
+    X = pd.read_parquet(destino / "x.parquet")
+    S, pca = entrada_clustering(X, c["entrada"], c["pca_varianza"], cfg.semilla)
+    S.to_parquet(destino / "entrada.parquet")
+    if pca is not None:
+        pca.varianza.to_csv(destino / "pca_varianza.csv", index=False)
+        pca.cargas.to_csv(destino / "pca_cargas.csv")
+        pca.scores_todos(X, 5).to_parquet(destino / "pca_scores.parquet")
+    ks = list(range(c["k_min"], c["k_max"] + 1))
+    sel = seleccion_k(S, ks, cfg.semilla, c)
+    sel.to_csv(destino / "seleccion_k.csv", index=False)
+    gap = gap_statistic(S.to_numpy(), list(range(1, c["k_max"] + 2)), c["gap_referencias"], cfg.semilla)
+    gap.to_csv(destino / "gap.csv", index=False)
+    hd, hd_etiq = barrido_hdbscan(S, c["hdbscan_min_cluster_size"], c["hdbscan_min_samples"])
+    hd.to_csv(destino / "hdbscan.csv", index=False)
+    dec = decidir_k(sel, None, modelo_final=c["modelo_final"], n=len(S))
+    dec["tabla"].to_csv(destino / "decision_k_interna.csv", index=False)
+    emb = umap_2d(S, cfg["umap"]["n_vecinos"], cfg["umap"]["min_dist"], cfg.semilla)
+    emb.to_parquet(destino / "umap.parquet")
+    k = dec["k"]
+    etiq = {a: ajustar(a, S.to_numpy(), k, cfg.semilla, c["kmeans_n_init"], c["gmm_n_init"], c["gmm_covarianza"]).etiquetas
+            for a in c["algoritmos"]}
+    t_hd = int(hd.loc[hd["n_grupos"] >= 2, "min_cluster_size"].min()) if (hd["n_grupos"] >= 2).any() else None
+    if t_hd is not None:
+        etiq["hdbscan"] = hd_etiq[t_hd]
+    acuerdo(etiq).to_csv(destino / "acuerdo_algoritmos_k_interno.csv", index=False)
+    gmm = sel[sel["algoritmo"] == "gmm"]
+    resumen = {
+        "entrada": c["entrada"],
+        "n_componentes_pca": int(S.shape[1]),
+        "varianza_pc1": float(pca.varianza["varianza_explicada"].iloc[0]) if pca is not None else None,
+        "k_por_criterios_internos": k,
+        "k_gap": int(gap.loc[gap["cumple_regla"], "k"].min()) if gap["cumple_regla"].any() else None,
+        "k_bic_gmm": int(gmm.loc[gmm["bic"].idxmin(), "k"]) if not gmm.empty else None,
+        "silhouette_max": float(sel["silhouette"].max()),
+        "hdbscan_ruido_min_pct": float(hd["pct_ruido"].min()),
+    }
+    guardar_json(resumen, destino / "cluster_resumen.json")
+    log.info("cluster: %s", resumen)
+    return resumen
+
+
 def ejecutar_etapa(etapa: str, cfg: Config, forzar: bool = False, offline: bool = False) -> int:
     destino = dir_trabajo(cfg)
     if etapa == "features":
         etapa_features(cfg, destino)
+        return 0
+    if etapa == "cluster":
+        etapa_cluster(cfg, destino)
         return 0
     raise NotImplementedError(f"Etapa {etapa} todavía no implementada")
