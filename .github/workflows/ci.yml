@@ -12,13 +12,19 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.11", "3.12"]
+    env:
+      # Sin esto, uv usaría la versión fijada en .python-version (3.12) en todos los jobs.
+      UV_PYTHON: ${{ matrix.python-version }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
         with:
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
       - name: Instalar dependencias
-        run: uv sync --locked --python ${{ matrix.python-version }}
+        run: uv sync --locked
+      - name: Verificar versión de Python
+        run: uv run python -c "import sys; v = '.'.join(map(str, sys.version_info[:2])); print(v); assert v == '${{ matrix.python-version }}'"
       - name: Lint
         run: uv run ruff check src tests app
       - name: Tests (incluye pipeline sintético y humo de la app)
