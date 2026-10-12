@@ -76,6 +76,11 @@ estabilidad:
   n_remuestreos: 50
   fraccion_submuestra: 0.80
   umbral_estable: 0.75      # ARI medio mínimo para considerar estable una partición
+  # Ruido de medición: a las tasas sensibles al tamaño se les suma ruido N(0, (nivel * sqrt(pob_mediana / pob))^2)
+  # en unidades estandarizadas y se reasigna con el modelo final ya ajustado.
+  ruido_tamano_nivel: 0.30
+  ruido_tamano_replicas: 50
+  referencia_nula_replicas: 10
 
 sensibilidad:
   pob_min_ciudad_grande: 250000

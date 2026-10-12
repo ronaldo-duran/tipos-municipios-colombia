@@ -152,8 +152,11 @@ def regla_exclusion(faltante: pd.DataFrame, max_frac: float, nombres: pd.Series 
 
 def construir_matriz(cfg: Config, anio: int, indicadores: list[Indicador], largo: pd.DataFrame,
                      mun: pd.DataFrame, excluir_codigos: list[str] | None = None,
-                     motivo_extra: str = "") -> Matriz:
-    """Matriz completa para un año: valores, cobertura, exclusiones por regla y descartes por cobertura."""
+                     motivo_extra: str = "", municipios_fijos: pd.Index | None = None) -> Matriz:
+    """Matriz completa para un año: valores, cobertura, exclusiones por regla y descartes por cobertura.
+
+    Con `municipios_fijos` no se aplica la regla de exclusión: se usan esos municipios (sirve para aislar el
+    efecto de cambiar indicadores en el análisis de sensibilidad, sin que cambie la muestra)."""
     universo = mun.index
     if excluir_codigos:
         universo = universo.difference(pd.Index(excluir_codigos))
@@ -167,7 +170,13 @@ def construir_matriz(cfg: Config, anio: int, indicadores: list[Indicador], largo
     cols = [i.id for i in usados]
     for c, motivo in descartados.items():
         log.warning("Indicador %s descartado: %s", c, motivo)
-    incluidos, excluidos = regla_exclusion(faltante[cols], cfg["datos"]["max_faltantes_municipio"], mun["nombre"])
+    if municipios_fijos is not None:
+        incluidos = faltante.index.intersection(municipios_fijos)
+        fuera = faltante.index.difference(incluidos)
+        excluidos = pd.DataFrame({"cod": list(fuera), "nombre": mun["nombre"].reindex(fuera).tolist(),
+                                  "motivo": "fuera de la muestra de la línea base"})
+    else:
+        incluidos, excluidos = regla_exclusion(faltante[cols], cfg["datos"]["max_faltantes_municipio"], mun["nombre"])
     if excluir_codigos:
         extra = pd.DataFrame({"cod": list(excluir_codigos), "nombre": mun["nombre"].reindex(excluir_codigos).tolist(),
                               "motivo": motivo_extra or "excluido por el escenario"})

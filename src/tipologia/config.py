@@ -32,6 +32,7 @@ class Indicador:
     factor: float = 1.0
     transformacion: str | None = None
     vecino: int = 0
+    sensible_tamano: bool = False
 
     @property
     def codigos_fuente(self) -> set[str]:
@@ -101,6 +102,7 @@ def _a_indicador(d: dict[str, Any]) -> Indicador:
         factor=float(d.get("factor", 1.0)),
         transformacion=d.get("transformacion"),
         vecino=int(d.get("vecino", 0)),
+        sensible_tamano=bool(d.get("sensible_tamano", False)),
     )
 
 

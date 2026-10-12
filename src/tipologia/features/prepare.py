@@ -71,14 +71,16 @@ class Preparado:
 
 def preparar(cfg: Config, datos: DatosBase, anio: int | None = None, uso: str = "entrada",
              quitar_dominios: tuple[str, ...] = (), excluir_codigos: list[str] | None = None,
-             motivo_extra: str = "", indicadores_ids: list[str] | None = None) -> Preparado:
+             motivo_extra: str = "", indicadores_ids: list[str] | None = None,
+             municipios_fijos: pd.Index | None = None) -> Preparado:
     """Prepara la matriz de un escenario. Los parámetros metodológicos salen de `cfg`."""
     anio = anio or cfg["datos"]["anio_referencia"]
     p = cfg["preparacion"]
     inds = [i for i in cfg.indicadores_por_uso(uso) if i.dominio not in quitar_dominios]
     if indicadores_ids is not None:
         inds = [i for i in inds if i.id in indicadores_ids]
-    matriz = construir_matriz(cfg, anio, inds, datos.largo, datos.municipios, excluir_codigos, motivo_extra)
+    matriz = construir_matriz(cfg, anio, inds, datos.largo, datos.municipios, excluir_codigos, motivo_extra,
+                              municipios_fijos)
     usados = matriz.indicadores
     valores = matriz.valores
     if p["imputacion"] == "casos_completos":

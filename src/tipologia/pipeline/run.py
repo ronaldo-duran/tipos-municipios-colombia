@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import logging
 from pathlib import Path
 
@@ -17,6 +16,7 @@ from tipologia.features.build import patron_faltantes
 from tipologia.features.impute import resumen_imputacion
 from tipologia.features.prepare import cargar_datos_base, preparar
 from tipologia.features.transform import varianza_por_dominio
+from tipologia.pipeline.io import guardar_json
 
 log = logging.getLogger(__name__)
 
@@ -25,20 +25,6 @@ def dir_trabajo(cfg: Config) -> Path:
     d = cfg.ruta("processed") / "trabajo"
     d.mkdir(parents=True, exist_ok=True)
     return d
-
-
-def guardar_json(obj, ruta: Path) -> None:
-    ruta.write_text(json.dumps(obj, indent=2, ensure_ascii=False, default=_a_json), encoding="utf-8")
-
-
-def _a_json(o):
-    if hasattr(o, "item"):
-        return o.item()
-    if isinstance(o, (pd.Series, pd.Index)):
-        return o.tolist()
-    if isinstance(o, Path):
-        return str(o)
-    return str(o)
 
 
 def etapa_features(cfg: Config, destino: Path) -> dict:
@@ -56,6 +42,7 @@ def etapa_features(cfg: Config, destino: Path) -> dict:
     P.Z.to_parquet(destino / "z.parquet")
     P.X.to_parquet(destino / "x.parquet")
     P.imputado.to_parquet(destino / "imputado.parquet")
+    P.ponderacion.pesos.rename("peso").to_csv(destino / "pesos_ponderacion.csv")
     P.matriz.anios.to_parquet(destino / "anios_dato.parquet")
     P.municipios.to_parquet(destino / "municipios.parquet")
     P.matriz.excluidos.to_csv(destino / "excluidos.csv", index=False)
@@ -146,5 +133,9 @@ def ejecutar_etapa(etapa: str, cfg: Config, forzar: bool = False, offline: bool 
         return 0
     if etapa == "cluster":
         etapa_cluster(cfg, destino)
+        return 0
+    if etapa == "stability":
+        from tipologia.pipeline.etapa_estabilidad import etapa_estabilidad
+        etapa_estabilidad(cfg, destino)
         return 0
     raise NotImplementedError(f"Etapa {etapa} todavía no implementada")

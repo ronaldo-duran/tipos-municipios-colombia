@@ -10,6 +10,8 @@
 #            validacion   -> solo validación externa (nunca entra al clustering)
 #            temporal     -> entra al conjunto comparable del análisis temporal
 # formula:   razon        -> suma(numerador) / denominador * factor (denominador "poblacion" = población total)
+# sensible_tamano: true   -> tasa con denominador pequeño en municipios pequeños (más ruido de medición);
+#                            se usa en el análisis de perturbación por tamaño
 
 dominios:
   demografia_territorio: Demografía y territorio
@@ -139,6 +141,7 @@ indicadores:
     codigo: "040010010"
     anio: ref
     unidad: "%"
+    sensible_tamano: true
     uso: [entrada, temporal]
   - id: desercion
     nombre: Deserción intraanual (transición a once)
@@ -146,6 +149,7 @@ indicadores:
     codigo: "040020004"
     anio: ref
     unidad: "%"
+    sensible_tamano: true
     uso: [entrada, temporal]
   - id: cob_sup
     nombre: Cobertura en educación superior
@@ -160,6 +164,7 @@ indicadores:
     codigo: "040010028"
     anio: ref
     unidad: "%"
+    sensible_tamano: true
     uso: [entrada, temporal]
   - id: saber_mat
     nombre: Puntaje promedio Saber 11 matemáticas
@@ -183,6 +188,7 @@ indicadores:
     codigo: "050020005"
     anio: ref
     unidad: "%"
+    sensible_tamano: true
     uso: [entrada, temporal]
   - id: ctrl_prenat
     nombre: Nacidos vivos con 4 o más controles prenatales
@@ -190,6 +196,7 @@ indicadores:
     codigo: "050020007"
     anio: ref
     unidad: "%"
+    sensible_tamano: true
     uso: [entrada, temporal]
   - id: fec_adol
     nombre: Fecundidad en mujeres de 15 a 19 años
@@ -197,6 +204,7 @@ indicadores:
     codigo: "050020043"
     anio: ref
     unidad: "por 1.000 mujeres"
+    sensible_tamano: true
     uso: [entrada, temporal]
   - id: bajo_peso
     nombre: Nacidos vivos con bajo peso al nacer
@@ -204,6 +212,7 @@ indicadores:
     codigo: "050020006"
     anio: ref
     unidad: "%"
+    sensible_tamano: true
     uso: [entrada, temporal]
   - id: parto_inst
     nombre: Partos atendidos por personal calificado
@@ -211,6 +220,7 @@ indicadores:
     codigo: "050020077"
     anio: ref
     unidad: "%"
+    sensible_tamano: true
     uso: [entrada, temporal]
 
   # --- Servicios y conectividad ------------------------------------------------
@@ -353,6 +363,7 @@ indicadores:
     anio: ref
     transformacion: log1p
     unidad: "por 1.000 hab"
+    sensible_tamano: true
     uso: [entrada, temporal]
   - id: vict_ubic_pc
     nombre: Víctimas ubicadas
@@ -364,6 +375,7 @@ indicadores:
     anio: ref
     transformacion: log1p
     unidad: "por 1.000 hab"
+    sensible_tamano: true
     uso: [entrada, temporal]
   # ha de coca / (km2 * 100 ha/km2) * 100 = ha / km2 = % del área municipal
   - id: coca_area
