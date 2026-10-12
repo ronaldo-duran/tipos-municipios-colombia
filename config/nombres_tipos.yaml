@@ -1,0 +1,26 @@
+# Nombres descriptivos y neutros de los tipos, escritos tras revisar los perfiles (perfiles_z.csv).
+# Las letras siguen el tamaño del grupo (A = el más numeroso), no un orden de mérito.
+# `firma`: rasgos (indicador y signo de su mediana z) que deben seguir entre los 3 más distintivos del tipo.
+# Si una nueva ejecución cambia la firma, la app usa el descriptor automático en lugar de este nombre.
+tipos:
+  A:
+    nombre: Rural con población mayor y baja incidencia del conflicto
+    firma: regalias_pc_log+,vict_ubic_pc-
+    descripcion: >-
+      Municipios mayoritariamente rurales y pequeños, con población más envejecida que el promedio, baja
+      incidencia reciente de hechos victimizantes, menor déficit cuantitativo de vivienda y mayor peso de las
+      regalías en sus ingresos. Predominan en la región Centro Oriente.
+  B:
+    nombre: Rural joven con alta incidencia del conflicto y brechas de vivienda
+    firma: vict_ocurr_pc+,def_cuant+
+    descripcion: >-
+      Municipios rurales con población joven, alta incidencia de hechos victimizantes y de víctimas ubicadas,
+      mayor pobreza multidimensional y déficit cuantitativo de vivienda (censo 2018), menor cobertura de acueducto
+      y mayor dependencia de las transferencias. Se concentran en el Pacífico, los Llanos y el sur del Caribe.
+  C:
+    nombre: Urbano e intermedio con mayor formalidad y cobertura de servicios
+    firma: alcant+,pct_rural-
+    descripcion: >-
+      Ciudades y municipios intermedios: menor población rural, mayor densidad, más cobertura de alcantarillado,
+      acueducto e internet, más afiliación al régimen contributivo y a la educación superior, y menor peso de las
+      actividades primarias. Agrupa al 20 % de los municipios y al 71 % de la población.

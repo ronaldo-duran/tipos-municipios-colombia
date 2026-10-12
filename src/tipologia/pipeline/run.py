@@ -138,4 +138,8 @@ def ejecutar_etapa(etapa: str, cfg: Config, forzar: bool = False, offline: bool 
         from tipologia.pipeline.etapa_estabilidad import etapa_estabilidad
         etapa_estabilidad(cfg, destino)
         return 0
+    if etapa == "profile":
+        from tipologia.pipeline.etapa_perfil import etapa_perfil
+        etapa_perfil(cfg, destino)
+        return 0
     raise NotImplementedError(f"Etapa {etapa} todavía no implementada")

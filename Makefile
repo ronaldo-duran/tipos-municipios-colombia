@@ -1,7 +1,7 @@
 # En Windows sin make: `uv run python -m tipologia.pipeline.cli <etapa>`
 PY = uv run python -m tipologia.pipeline.cli
 
-.PHONY: install ingest validate features cluster stability test lint
+.PHONY: install ingest validate features cluster stability profile test lint
 
 install:
 	uv sync
@@ -20,6 +20,9 @@ cluster:
 
 stability:
 	$(PY) stability
+
+profile:
+	$(PY) profile
 
 test:
 	uv run pytest
