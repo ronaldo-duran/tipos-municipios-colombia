@@ -1,0 +1,391 @@
+# Catálogo de indicadores. Cada entrada define de dónde sale el dato (códigos de TerriData),
+# qué año se usa y qué transformación recibe.
+#
+# anio:      ref          -> año de referencia (config.yaml)
+#            fijo:2018    -> año fijo (censo 2018)
+#            rezago:N     -> último dato disponible entre ref-N y ref
+# vecino:    N            -> si falta en el año de referencia, usa el año más cercano a distancia <= N
+#                            y lo marca como imputado (cuenta como faltante para la regla de exclusión)
+# uso:       entrada      -> entra al clustering
+#            validacion   -> solo validación externa (nunca entra al clustering)
+#            temporal     -> entra al conjunto comparable del análisis temporal
+# formula:   razon        -> suma(numerador) / denominador * factor (denominador "poblacion" = población total)
+
+dominios:
+  demografia_territorio: Demografía y territorio
+  pobreza_vivienda: Pobreza y vivienda
+  educacion: Educación
+  salud: Salud
+  servicios_conectividad: Servicios y conectividad
+  economia: Economía y estructura productiva
+  fiscal_institucional: Capacidad fiscal e institucional
+  conflicto: Conflicto armado
+
+poblacion_codigo: "010010009"
+area_codigo: "010010008"
+
+indicadores:
+  # --- Demografía y territorio -------------------------------------------------
+  - id: pob_log
+    nombre: Población total
+    dominio: demografia_territorio
+    codigo: "010010009"
+    anio: ref
+    transformacion: log
+    unidad: personas
+    uso: [entrada, temporal]
+  - id: dens_log
+    nombre: Densidad poblacional
+    dominio: demografia_territorio
+    codigo: "010010010"
+    anio: ref
+    transformacion: log
+    unidad: hab/km2
+    uso: [entrada, temporal]
+  - id: pct_rural
+    nombre: Población rural
+    dominio: demografia_territorio
+    codigo: "020040004"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: ind_envej
+    nombre: Índice de envejecimiento
+    dominio: demografia_territorio
+    codigo: "020090031"
+    anio: ref
+    unidad: "60+ por cada 100 <15"
+    uso: [entrada, temporal]
+  - id: pct_indig
+    nombre: Población indígena
+    dominio: demografia_territorio
+    codigo: "020050007"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: pct_narp
+    nombre: Población negra, afrocolombiana, raizal y palenquera
+    dominio: demografia_territorio
+    codigo: "020050014"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: var_interc
+    nombre: Variación intercensal 2005-2018
+    dominio: demografia_territorio
+    codigo: "010010011"
+    anio: fijo:2018
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: pct_sinap
+    nombre: Área en el Sistema Nacional de Áreas Protegidas
+    dominio: demografia_territorio
+    codigo: "110020002"
+    anio: rezago:2
+    unidad: "%"
+    uso: [entrada]
+
+  # --- Pobreza y vivienda (censo 2018 salvo Sisbén) ----------------------------
+  - id: ipm
+    nombre: Índice de pobreza multidimensional (censo 2018)
+    dominio: pobreza_vivienda
+    codigo: "140030015"
+    anio: fijo:2018
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: nbi_hacin
+    nombre: NBI hacinamiento crítico (censo 2018)
+    dominio: pobreza_vivienda
+    codigo: "140060013"
+    anio: fijo:2018
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: nbi_viv
+    nombre: NBI vivienda inadecuada (censo 2018)
+    dominio: pobreza_vivienda
+    codigo: "140060007"
+    anio: fijo:2018
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: def_cuant
+    nombre: Déficit cuantitativo de vivienda (censo 2018)
+    dominio: pobreza_vivienda
+    codigo: "030010009"
+    anio: fijo:2018
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: def_cual
+    nombre: Déficit cualitativo de vivienda (censo 2018)
+    dominio: pobreza_vivienda
+    codigo: "030010008"
+    anio: fijo:2018
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: sisben_ab
+    nombre: Personas en Sisbén IV grupos A y B
+    dominio: pobreza_vivienda
+    formula: razon
+    numerador: ["020110004", "020110005"]
+    denominador: "020110003"
+    factor: 100
+    anio: ref
+    unidad: "% de registrados"
+    uso: [entrada]
+
+  # --- Educación ---------------------------------------------------------------
+  - id: cob_media
+    nombre: Cobertura neta en educación media
+    dominio: educacion
+    codigo: "040010010"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: desercion
+    nombre: Deserción intraanual (transición a once)
+    dominio: educacion
+    codigo: "040020004"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: cob_sup
+    nombre: Cobertura en educación superior
+    dominio: educacion
+    codigo: "040010013"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: transito_sup
+    nombre: Tránsito inmediato a la educación superior
+    dominio: educacion
+    codigo: "040010028"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: saber_mat
+    nombre: Puntaje promedio Saber 11 matemáticas
+    dominio: educacion
+    codigo: "040040001"
+    anio: rezago:2
+    unidad: puntos
+    uso: [validacion]
+
+  # --- Salud -------------------------------------------------------------------
+  - id: cob_subsid
+    nombre: Cobertura del régimen subsidiado
+    dominio: salud
+    codigo: "050010004"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: vac_penta
+    nombre: Cobertura de vacunación pentavalente <1 año
+    dominio: salud
+    codigo: "050020005"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: ctrl_prenat
+    nombre: Nacidos vivos con 4 o más controles prenatales
+    dominio: salud
+    codigo: "050020007"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: fec_adol
+    nombre: Fecundidad en mujeres de 15 a 19 años
+    dominio: salud
+    codigo: "050020043"
+    anio: ref
+    unidad: "por 1.000 mujeres"
+    uso: [entrada, temporal]
+  - id: bajo_peso
+    nombre: Nacidos vivos con bajo peso al nacer
+    dominio: salud
+    codigo: "050020006"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: parto_inst
+    nombre: Partos atendidos por personal calificado
+    dominio: salud
+    codigo: "050020077"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+
+  # --- Servicios y conectividad ------------------------------------------------
+  - id: internet
+    nombre: Penetración de internet fijo
+    dominio: servicios_conectividad
+    codigo: "030010003"
+    anio: ref
+    unidad: "accesos por 100 hab"
+    uso: [entrada, temporal]
+  - id: acued
+    nombre: Cobertura de acueducto (censo 2018)
+    dominio: servicios_conectividad
+    codigo: "030010004"
+    anio: fijo:2018
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: alcant
+    nombre: Cobertura de alcantarillado (censo 2018)
+    dominio: servicios_conectividad
+    codigo: "030010006"
+    anio: fijo:2018
+    unidad: "%"
+    uso: [entrada, temporal]
+  - id: energia
+    nombre: Cobertura de energía eléctrica
+    dominio: servicios_conectividad
+    codigo: "030010063"
+    anio: ref
+    unidad: "%"
+    uso: [entrada, temporal]
+
+  # --- Economía y estructura productiva ----------------------------------------
+  - id: va_pc_log
+    nombre: Valor agregado per cápita
+    dominio: economia
+    formula: razon
+    numerador: ["120210001"]
+    denominador: poblacion
+    factor: 1000000000
+    anio: rezago:1
+    transformacion: log
+    unidad: pesos corrientes
+    uso: [entrada, temporal]
+  - id: va_prim
+    nombre: Valor agregado de actividades primarias
+    dominio: economia
+    codigo: "120210008"
+    anio: rezago:1
+    unidad: "% del VA"
+    uso: [entrada, temporal]
+  - id: va_sec
+    nombre: Valor agregado de actividades secundarias
+    dominio: economia
+    codigo: "120210009"
+    anio: rezago:1
+    unidad: "% del VA"
+    uso: [entrada, temporal]
+  - id: contrib_pc
+    nombre: Afiliados al régimen contributivo
+    dominio: economia
+    formula: razon
+    numerador: ["050010001"]
+    denominador: poblacion
+    factor: 100
+    anio: ref
+    unidad: "% de la población"
+    uso: [entrada, temporal]
+  - id: avaluo_pc_log
+    nombre: Avalúo catastral per cápita
+    dominio: economia
+    formula: razon
+    numerador: ["150070004"]
+    denominador: poblacion
+    factor: 1000000
+    anio: ref
+    transformacion: log
+    unidad: pesos corrientes
+    uso: [entrada, temporal]
+
+  # --- Capacidad fiscal e institucional -----------------------------------------
+  - id: dep_transf
+    nombre: Dependencia de las transferencias
+    dominio: fiscal_institucional
+    codigo: "070130001"
+    anio: ref
+    vecino: 1
+    unidad: "%"
+    uso: [entrada]
+  - id: dep_transf_calc
+    nombre: Transferencias nacionales sobre ingresos totales
+    dominio: fiscal_institucional
+    formula: razon
+    numerador: ["070010029"]
+    denominador: "070010018"
+    factor: 100
+    anio: ref
+    vecino: 1
+    unidad: "%"
+    uso: [temporal]
+  - id: trib_pc_log
+    nombre: Ingresos tributarios per cápita
+    dominio: fiscal_institucional
+    codigo: "070010020"
+    anio: ref
+    vecino: 1
+    transformacion: log1p
+    unidad: pesos corrientes
+    uso: [entrada, temporal]
+  - id: regalias_pc_log
+    nombre: Regalías per cápita
+    dominio: fiscal_institucional
+    codigo: "070010027"
+    anio: ref
+    vecino: 1
+    transformacion: log1p
+    unidad: pesos corrientes
+    uso: [entrada, temporal]
+  - id: inv_pc_log
+    nombre: Inversión (gastos de capital) per cápita
+    dominio: fiscal_institucional
+    formula: razon
+    numerador: ["070010012"]
+    denominador: poblacion
+    factor: 1000000
+    anio: ref
+    vecino: 1
+    transformacion: log1p
+    unidad: pesos corrientes
+    uso: [entrada, temporal]
+
+  # --- Conflicto armado (componentes observables; el IICA es compuesto y no entra) ---
+  - id: vict_ocurr_pc
+    nombre: Hechos victimizantes por ocurrencia
+    dominio: conflicto
+    formula: razon
+    numerador: ["260030003"]
+    denominador: poblacion
+    factor: 1000
+    anio: ref
+    transformacion: log1p
+    unidad: "por 1.000 hab"
+    uso: [entrada, temporal]
+  - id: vict_ubic_pc
+    nombre: Víctimas ubicadas
+    dominio: conflicto
+    formula: razon
+    numerador: ["260030001"]
+    denominador: poblacion
+    factor: 1000
+    anio: ref
+    transformacion: log1p
+    unidad: "por 1.000 hab"
+    uso: [entrada, temporal]
+  # ha de coca / (km2 * 100 ha/km2) * 100 = ha / km2 = % del área municipal
+  - id: coca_area
+    nombre: Cultivos de coca
+    dominio: conflicto
+    formula: razon
+    numerador: ["260020001"]
+    denominador: area
+    factor: 1
+    anio: rezago:1
+    transformacion: log1p
+    unidad: "% del área"
+    uso: [entrada, temporal]
+
+# Clasificaciones externas: nunca entran al clustering, solo se comparan.
+referencias:
+  tipologia_dnp:
+    columna: Tipología_2026
+    tipo: ordinal
+    orden: ["1", "2", "3", "4", "5"]
+    especiales: ["Bogotá", "Ciudades grandes"]
+  ruralidad:
+    columna: Cat_Ruralidad 2024
+    tipo: ordinal
+    orden: [Ciudades y aglomeraciones, Intermedio, Rural, Rural disperso]

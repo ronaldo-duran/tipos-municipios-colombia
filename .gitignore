@@ -1,0 +1,17 @@
+# Datos pesados: se regeneran con `make ingest`
+data/raw/*
+data/incoming/*
+data/processed/*
+!data/raw/.gitkeep
+!data/incoming/.gitkeep
+!data/processed/.gitkeep
+*.part
+
+# Entorno
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store

@@ -1,0 +1,102 @@
+# Configuración general del pipeline. Todo umbral o decisión metodológica vive aquí.
+proyecto:
+  nombre: tipologia-municipios-colombia
+  semilla: 20231011
+
+rutas:
+  raw: data/raw
+  incoming: data/incoming
+  processed: data/processed
+  outputs: outputs
+  app_geo: app/data/municipios.geojson
+
+fuentes:
+  terridata:
+    # El dataset 64cq-xb2k de datos.gov.co ya no existe (verificado 2026-10-11); se usa la descarga del portal.
+    url: https://terridata.dnp.gov.co/assets/docs/txt/dimensiones/TerriData.txt.zip
+    archivo_interno: TerriData.txt
+  divipola:
+    dominio: www.datos.gov.co
+    dataset: gdxc-w37w
+  dnp_tipologias:
+    url: https://colaboracion.dnp.gov.co/CDT/Desarrollo%20Territorial/2026_Descentral%C3%ADzacion/01_ResultadosTipologias2026.xlsx
+    hoja: Municipios
+  geo_app:
+    # Límites para la app: COD-AB de HDX (fuente DANE, MGN 2018), licencia CC BY-IGO, redistribuible con atribución.
+    url: https://data.humdata.org/dataset/50ea7fee-f9af-45a7-8a52-abb9c790a0b6/resource/32fba556-0109-4d1c-84cb-c8abddf7775b/download/col-administrative-divisions-shapefiles.zip
+    capa: col_admbnda_adm2_mgn_20200416.shp
+    columna_codigo: ADM2_PCODE
+    prefijo_codigo: CO
+    tolerancia_simplificacion: 0.004
+    licencia: CC BY-IGO 3.0
+  mgn:
+    # MGN 2025 del DANE: solo uso local (vecindad espacial). Su licencia no permite redistribuirlo.
+    url: https://geoportal.dane.gov.co/descargas/mgn_2025/MGN2025_MPIO_GRAFICO.zip
+    capa: MGN_ADM_MPIO_GRAFICO.shp
+    columna_codigo: mpio_cdpmp
+
+datos:
+  anio_referencia: 2023
+  anios_sensibilidad: [2022, 2024]
+  # Un indicador entra si tiene dato en al menos esta fracción de municipios en el año de referencia.
+  cobertura_min_indicador: 0.90
+  # Un municipio se excluye si le falta más de esta fracción de indicadores en el año de referencia
+  # (antes de cualquier imputación, incluido el relleno con año vecino).
+  max_faltantes_municipio: 0.12
+
+preparacion:
+  winsorizar:
+    activo: true
+    inferior: 0.01
+    superior: 0.99
+  escalado: estandar        # estandar | robusto
+  ponderacion: dominio      # dominio | indicador | pca_bloque
+  pca_bloque_varianza: 0.80
+  imputacion: iterativa     # iterativa | mediana_departamento | knn | casos_completos
+  knn_vecinos: 10
+  iterativa_max_iter: 15
+
+clustering:
+  entrada: pca              # pca | variables
+  pca_varianza: 0.80
+  k_min: 2
+  k_max: 10
+  algoritmos: [kmeans, gmm, ward]
+  kmeans_n_init: 20
+  gmm_n_init: 5
+  gmm_covarianza: full
+  hdbscan_min_cluster_size: [10, 15, 20, 30, 50]
+  hdbscan_min_samples: 5
+  gap_referencias: 20
+  modelo_final: gmm
+  umbral_frontera: 0.70     # prob. máxima de pertenencia por debajo de la cual un municipio es "frontera"
+  umbral_estabilidad_individual: 0.70
+
+estabilidad:
+  n_remuestreos: 50
+  fraccion_submuestra: 0.80
+  umbral_estable: 0.75      # ARI medio mínimo para considerar estable una partición
+
+sensibilidad:
+  pob_min_ciudad_grande: 250000
+  pac_umbral_inferior: 0.1
+  pac_umbral_superior: 0.9
+
+interpretacion:
+  n_representativos: 5
+  n_similares: 10
+  arbol_profundidad: 4
+  rf_arboles: 300
+  cv_folds: 5
+
+espacial:
+  permutaciones: 999
+  alfa: 0.05
+
+temporal:
+  anio_base: 2019
+  anio_final: 2023
+
+umap:
+  n_vecinos: 30
+  min_dist: 0.3

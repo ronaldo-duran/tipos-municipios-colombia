@@ -1,0 +1,9 @@
+{
+  "fuente": "HDX COD-AB Colombia (DANE, MGN 2018)",
+  "licencia": "CC BY-IGO 3.0",
+  "url": "https://data.humdata.org/dataset/50ea7fee-f9af-45a7-8a52-abb9c790a0b6/resource/32fba556-0109-4d1c-84cb-c8abddf7775b/download/col-administrative-divisions-shapefiles.zip",
+  "version_fuente": "2021-03-25",
+  "sha256_fuente": "46a86d9cddf4724d931fe99b1c22859c473ea3a58fb8b2071e64e1062eee4bfa",
+  "poligonos": 1122,
+  "tolerancia_simplificacion_grados": 0.004
+}
