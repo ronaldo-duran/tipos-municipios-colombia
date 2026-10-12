@@ -12,6 +12,7 @@ import duckdb
 import geopandas as gpd
 import pandas as pd
 import shapely
+import shapely.ops
 
 from tipologia.config import Config
 from tipologia.data.divipola import normalizar_serie
@@ -166,7 +167,8 @@ def ingest_geo_app(cfg: Config, forzar: bool = False, offline: bool = False) -> 
     destino = cfg.ruta("app_geo")
     meta_path = destino.with_suffix(".meta.json")
     try:
-        zip_path = fuente.obtener(forzar=forzar, offline=offline)
+        # --forzar regenera el GeoJSON; la descarga solo se repite si hay versión nueva.
+        zip_path = fuente.obtener(offline=offline)
     except (FileNotFoundError, OSError) as e:
         if destino.exists():
             log.warning("Sin fuente de geometrías (%s); conservo %s", e, destino)
@@ -181,11 +183,16 @@ def ingest_geo_app(cfg: Config, forzar: bool = False, offline: bool = False) -> 
     g["geometry"] = shapely.set_precision(
         g.geometry.simplify(c["tolerancia_simplificacion"], preserve_topology=True).values, 1e-4)
     g = g[~g.geometry.is_empty].sort_values("cod")
+    # Anillos exteriores en sentido horario: es lo que espera d3-geo (plotly go.Choropleth). Con la
+    # convención RFC 7946 (antihoraria), plotly rellena el complemento del polígono.
+    g["geometry"] = g.geometry.map(lambda geom: shapely.ops.orient(geom, sign=-1.0) if geom.geom_type == "Polygon"
+                                   else shapely.MultiPolygon([shapely.ops.orient(x, sign=-1.0) for x in geom.geoms]))
     destino.parent.mkdir(parents=True, exist_ok=True)
-    g.to_file(destino, driver="GeoJSON", layer_options={"COORDINATE_PRECISION": 4, "RFC7946": "YES"})
+    g.to_file(destino, driver="GeoJSON", layer_options={"COORDINATE_PRECISION": 4, "WRITE_BBOX": "NO"})
     meta = {"fuente": "HDX COD-AB Colombia (DANE, MGN 2018)", "licencia": c["licencia"], "url": man.url,
             "version_fuente": man.version, "sha256_fuente": man.sha256, "poligonos": int(len(g)),
-            "tolerancia_simplificacion_grados": c["tolerancia_simplificacion"]}
+            "tolerancia_simplificacion_grados": c["tolerancia_simplificacion"],
+            "orientacion": "anillos exteriores en sentido horario (d3-geo / plotly)"}
     meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
     log.info("Geometrías de la app: %d polígonos, %.1f MB", len(g), destino.stat().st_size / 1e6)
     return destino

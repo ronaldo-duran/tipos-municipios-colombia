@@ -1,0 +1,41 @@
+indicador,importancia_permutacion,sd_entre_pliegues,dominio,nombre
+cob_sup,0.09363636363636363,0.009350829724090017,educacion,Cobertura en educación superior
+va_sec,0.06618181818181817,0.016123490383560278,economia,Valor agregado de actividades secundarias
+coca_area,0.0479090909090909,0.017388606510115635,conflicto,Cultivos de coca
+pct_indig,0.012545454545454535,0.009066330410228706,demografia_territorio,Población indígena
+def_cuant,0.012272727272727255,0.004878693769090454,pobreza_vivienda,Déficit cuantitativo de vivienda (censo 2018)
+internet,0.0074545454545454385,0.005282123289575978,servicios_conectividad,Penetración de internet fijo
+parto_inst,0.006818181818181805,0.007368685137876152,salud,Partos atendidos por personal calificado
+pob_log,0.006727272727272718,0.005766818737146795,demografia_territorio,Población total
+alcant,0.0059090909090909055,0.007595126754256509,servicios_conectividad,Cobertura de alcantarillado (censo 2018)
+contrib_pc,0.005909090909090893,0.004378761665015369,economia,Afiliados al régimen contributivo
+vict_ubic_pc,0.005181818181818172,0.005179425284816025,conflicto,Víctimas ubicadas
+pct_rural,0.00472727272727272,0.004984272786135553,demografia_territorio,Población rural
+vict_ocurr_pc,0.004727272727272715,0.008062770272233333,conflicto,Hechos victimizantes por ocurrencia
+ind_envej,0.00472727272727271,0.006156364710304356,demografia_territorio,Índice de envejecimiento
+ctrl_prenat,0.004545454545454535,0.0031228298249668315,salud,Nacidos vivos con 4 o más controles prenatales
+def_cual,0.003909090909090895,0.0037328118486632308,pobreza_vivienda,Déficit cualitativo de vivienda (censo 2018)
+pct_narp,0.0037272727272727214,0.0042387429915908175,demografia_territorio,"Población negra, afrocolombiana, raizal y palenquera"
+avaluo_pc_log,0.0023636363636363455,0.002377581241931269,economia,Avalúo catastral per cápita
+acued,0.002272727272727273,0.0049208613100815745,servicios_conectividad,Cobertura de acueducto (censo 2018)
+va_prim,0.0021818181818181715,0.00501567789968498,economia,Valor agregado de actividades primarias
+dens_log,0.0019999999999999974,0.007749166844045834,demografia_territorio,Densidad poblacional
+var_interc,0.0019999999999999953,0.002124240262826891,demografia_territorio,Variación intercensal 2005-2018
+fec_adol,0.0016363636363636268,0.0019624575586293437,salud,Fecundidad en mujeres de 15 a 19 años
+transito_sup,0.0012727272727272698,0.0018938787869090547,educacion,Tránsito inmediato a la educación superior
+regalias_pc_log,0.0009090909090909039,0.001970862126243516,fiscal_institucional,Regalías per cápita
+pct_sinap,0.0006363636363636349,0.0020246415864836366,demografia_territorio,Área en el Sistema Nacional de Áreas Protegidas
+desercion,0.0005454545454545423,0.0005300865358950242,educacion,Deserción intraanual (transición a once)
+va_pc_log,0.0005454545454545423,0.0017104443383842427,economia,Valor agregado per cápita
+vac_penta,0.0005454545454545423,0.000727272727272723,salud,Cobertura de vacunación pentavalente <1 año
+trib_pc_log,0.00045454545454545194,0.003579094488187166,fiscal_institucional,Ingresos tributarios per cápita
+cob_media,0.00045454545454545194,0.004861724348043949,educacion,Cobertura neta en educación media
+bajo_peso,0.00045454545454545194,0.0014083575804390523,salud,Nacidos vivos con bajo peso al nacer
+sisben_ab,0.0002727272727272776,0.0033103893556423757,pobreza_vivienda,Personas en Sisbén IV grupos A y B
+inv_pc_log,-0.00027272727272727117,0.002954195783503969,fiscal_institucional,Inversión (gastos de capital) per cápita
+energia,-0.0002727272727272713,0.0020650575802909966,servicios_conectividad,Cobertura de energía eléctrica
+nbi_viv,-0.00027272727272728016,0.004883773097659368,pobreza_vivienda,NBI vivienda inadecuada (censo 2018)
+dep_transf,-0.00036363636363635494,0.003034239866959745,fiscal_institucional,Dependencia de las transferencias
+cob_subsid,-0.0006363636363636439,0.006169774363984423,salud,Cobertura del régimen subsidiado
+nbi_hacin,-0.0010909090909090868,0.003183116618183906,pobreza_vivienda,NBI hacinamiento crítico (censo 2018)
+ipm,-0.0019090909090909072,0.00753175097353014,pobreza_vivienda,Índice de pobreza multidimensional (censo 2018)

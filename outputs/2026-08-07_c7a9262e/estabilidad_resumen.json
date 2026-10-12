@@ -1,0 +1,94 @@
+{
+  "k": 3,
+  "modelo_final": "gmm",
+  "ninguna_particion_estable": false,
+  "observado_modelo_final": {
+    "silhouette": 0.1695503910558214,
+    "ari_medio": 0.9344671103690577
+  },
+  "referencia_nula_media": {
+    "gmm": {
+      "silhouette": 0.0368,
+      "ari_medio": 0.2025
+    },
+    "kmeans": {
+      "silhouette": 0.1153,
+      "ari_medio": 0.8225
+    }
+  },
+  "referencia_nula_p95": {
+    "gmm": {
+      "silhouette": 0.0702,
+      "ari_medio": 0.3211
+    },
+    "kmeans": {
+      "silhouette": 0.1231,
+      "ari_medio": 0.9283
+    }
+  },
+  "pac": 0.0963917611051369,
+  "coasociacion_media_mismo_grupo": 0.9578486580740322,
+  "tamanos": {
+    "A": 650,
+    "B": 230,
+    "C": 220
+  },
+  "pct_frontera": 4.0,
+  "pct_frontera_probabilidad": 2.5454545454545454,
+  "pct_frontera_remuestreo": 2.6363636363636362,
+  "estabilidad_por_tamano_kruskal_p": 2.72399429689135e-35,
+  "ruido_por_tamano": [
+    {
+      "quintil": "Q1 (menor)",
+      "tasa_cambio_media": 0.015545454545454545,
+      "tasa_cambio_max": 0.42,
+      "pct_municipios_cambian_mas_10pct": 5.0
+    },
+    {
+      "quintil": "Q2",
+      "tasa_cambio_media": 0.01309090909090909,
+      "tasa_cambio_max": 0.48,
+      "pct_municipios_cambian_mas_10pct": 4.545454545454546
+    },
+    {
+      "quintil": "Q3",
+      "tasa_cambio_media": 0.01490909090909091,
+      "tasa_cambio_max": 0.5,
+      "pct_municipios_cambian_mas_10pct": 4.090909090909091
+    },
+    {
+      "quintil": "Q4",
+      "tasa_cambio_media": 0.007818181818181818,
+      "tasa_cambio_max": 0.38,
+      "pct_municipios_cambian_mas_10pct": 2.272727272727273
+    },
+    {
+      "quintil": "Q5 (mayor)",
+      "tasa_cambio_media": 0.005545454545454545,
+      "tasa_cambio_max": 0.52,
+      "pct_municipios_cambian_mas_10pct": 1.8181818181818181
+    }
+  ],
+  "sesgo_imputacion": {
+    "casos_completos_n": 1007,
+    "casos_completos_ari_vs_base": 0.9116283047404773,
+    "municipios_con_imputacion_en_esas_variables": 56,
+    "pct_cambio_tipo_imputados": 3.571428571428571,
+    "pct_cambio_tipo_resto": 5.842911877394636,
+    "coincidencia_global": 0.9427272727272727,
+    "distribucion_tipos_imputados": {
+      "A": 0.946,
+      "B": 0.054
+    },
+    "distribucion_tipos_resto": {
+      "A": 0.572,
+      "B": 0.217,
+      "C": 0.211
+    }
+  },
+  "sensibilidad_ari_mediana": 0.7757578544775792,
+  "sensibilidad_ari_min": {
+    "escenario": "escalado_robusto",
+    "ari": 0.32626093834989256
+  }
+}

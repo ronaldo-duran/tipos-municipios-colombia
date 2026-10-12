@@ -1,0 +1,41 @@
+id,nombre,dominio,dominio_nombre,codigo_terridata,regla_anio,anios_usados,transformacion,unidad,cobertura_ref,imputados,imputados_anio_vecino,winsor_recortados,peso
+pob_log,Población total,demografia_territorio,Demografía y territorio,010010009,ref,2023,log,personas,1.0,0,0,22,0.3536
+dens_log,Densidad poblacional,demografia_territorio,Demografía y territorio,010010010,ref,2023,log,hab/km2,1.0,0,0,22,0.3536
+pct_rural,Población rural,demografia_territorio,Demografía y territorio,020040004,ref,2023,,%,1.0,0,0,22,0.3536
+ind_envej,Índice de envejecimiento,demografia_territorio,Demografía y territorio,020090031,ref,2023,,60+ por cada 100 <15,1.0,0,0,22,0.3536
+pct_indig,Población indígena,demografia_territorio,Demografía y territorio,020050007,ref,2023,,%,1.0,0,0,11,0.3536
+pct_narp,"Población negra, afrocolombiana, raizal y palenquera",demografia_territorio,Demografía y territorio,020050014,ref,2023,,%,1.0,0,0,11,0.3536
+var_interc,Variación intercensal 2005-2018,demografia_territorio,Demografía y territorio,010010011,fijo:2018,2018,,%,0.9991,0,0,22,0.3536
+pct_sinap,Área en el Sistema Nacional de Áreas Protegidas,demografia_territorio,Demografía y territorio,110020002,rezago:2,2022,,%,0.9982,2,0,11,0.3536
+ipm,Índice de pobreza multidimensional (censo 2018),pobreza_vivienda,Pobreza y vivienda,140030015,fijo:2018,2018,,%,0.9991,0,0,21,0.4082
+nbi_hacin,NBI hacinamiento crítico (censo 2018),pobreza_vivienda,Pobreza y vivienda,140060013,fijo:2018,2018,,%,0.9991,0,0,22,0.4082
+nbi_viv,NBI vivienda inadecuada (censo 2018),pobreza_vivienda,Pobreza y vivienda,140060007,fijo:2018,2018,,%,0.9991,0,0,22,0.4082
+def_cuant,Déficit cuantitativo de vivienda (censo 2018),pobreza_vivienda,Pobreza y vivienda,030010009,fijo:2018,2018,,%,0.9991,0,0,22,0.4082
+def_cual,Déficit cualitativo de vivienda (censo 2018),pobreza_vivienda,Pobreza y vivienda,030010008,fijo:2018,2018,,%,0.9991,0,0,22,0.4082
+sisben_ab,Personas en Sisbén IV grupos A y B,pobreza_vivienda,Pobreza y vivienda,020110004+020110005/020110003,ref,2023,,% de registrados,0.9982,2,0,22,0.4082
+cob_media,Cobertura neta en educación media,educacion,Educación,040010010,ref,2023,,%,0.9927,8,0,22,0.5
+desercion,Deserción intraanual (transición a once),educacion,Educación,040020004,ref,2023,,%,0.9918,9,0,22,0.5
+cob_sup,Cobertura en educación superior,educacion,Educación,040010013,ref,2023,,%,1.0,0,0,11,0.5
+transito_sup,Tránsito inmediato a la educación superior,educacion,Educación,040010028,ref,2023,,%,0.9982,1,0,22,0.5
+cob_subsid,Cobertura del régimen subsidiado,salud,Salud,050010004,ref,2023,,%,1.0,0,0,22,0.4082
+vac_penta,Cobertura de vacunación pentavalente <1 año,salud,Salud,050020005,ref,2023,,%,1.0,0,0,22,0.4082
+ctrl_prenat,Nacidos vivos con 4 o más controles prenatales,salud,Salud,050020007,ref,2023,,%,1.0,0,0,11,0.4082
+fec_adol,Fecundidad en mujeres de 15 a 19 años,salud,Salud,050020043,ref,2023,,por 1.000 mujeres,0.9873,14,0,22,0.4082
+bajo_peso,Nacidos vivos con bajo peso al nacer,salud,Salud,050020006,ref,2023,,%,0.9574,46,0,21,0.4082
+parto_inst,Partos atendidos por personal calificado,salud,Salud,050020077,ref,2023,,%,1.0,0,0,11,0.4082
+internet,Penetración de internet fijo,servicios_conectividad,Servicios y conectividad,030010003,ref,2023,,accesos por 100 hab,1.0,0,0,22,0.5
+acued,Cobertura de acueducto (censo 2018),servicios_conectividad,Servicios y conectividad,030010004,fijo:2018,2018,,%,1.0,0,0,21,0.5
+alcant,Cobertura de alcantarillado (censo 2018),servicios_conectividad,Servicios y conectividad,030010006,fijo:2018,2018,,%,1.0,0,0,22,0.5
+energia,Cobertura de energía eléctrica,servicios_conectividad,Servicios y conectividad,030010063,ref,2023,,%,1.0,0,0,11,0.5
+va_pc_log,Valor agregado per cápita,economia,Economía y estructura productiva,120210001/poblacion,rezago:1,2023,log,pesos corrientes,1.0,0,0,22,0.4472
+va_prim,Valor agregado de actividades primarias,economia,Economía y estructura productiva,120210008,rezago:1,2023,,% del VA,1.0,0,0,22,0.4472
+va_sec,Valor agregado de actividades secundarias,economia,Economía y estructura productiva,120210009,rezago:1,2023,,% del VA,1.0,0,0,22,0.4472
+contrib_pc,Afiliados al régimen contributivo,economia,Economía y estructura productiva,050010001/poblacion,ref,2023,,% de la población,1.0,0,0,22,0.4472
+avaluo_pc_log,Avalúo catastral per cápita,economia,Economía y estructura productiva,150070004/poblacion,ref,2023,log,pesos corrientes,1.0,0,0,22,0.4472
+dep_transf,Dependencia de las transferencias,fiscal_institucional,Capacidad fiscal e institucional,070130001,ref,"2022,2023",,%,0.9782,23,23,22,0.5
+trib_pc_log,Ingresos tributarios per cápita,fiscal_institucional,Capacidad fiscal e institucional,070010020,ref,"2022,2023",log1p,pesos corrientes,0.9782,23,23,22,0.5
+regalias_pc_log,Regalías per cápita,fiscal_institucional,Capacidad fiscal e institucional,070010027,ref,"2022,2023",log1p,pesos corrientes,0.9782,23,23,11,0.5
+inv_pc_log,Inversión (gastos de capital) per cápita,fiscal_institucional,Capacidad fiscal e institucional,070010012/poblacion,ref,"2022,2023",log1p,pesos corrientes,0.9782,23,23,22,0.5
+vict_ocurr_pc,Hechos victimizantes por ocurrencia,conflicto,Conflicto armado,260030003/poblacion,ref,2023,log1p,por 1.000 hab,1.0,0,0,11,0.5774
+vict_ubic_pc,Víctimas ubicadas,conflicto,Conflicto armado,260030001/poblacion,ref,2023,log1p,por 1.000 hab,1.0,0,0,11,0.5774
+coca_area,Cultivos de coca,conflicto,Conflicto armado,260020001/area,rezago:1,2023,log1p,% del área,1.0,0,0,11,0.5774

@@ -1,0 +1,627 @@
+{
+  "proyecto": "tipologia-municipios-colombia",
+  "ejecucion": "2026-08-07_c7a9262e",
+  "anio_referencia": 2023,
+  "semilla": 20231011,
+  "indicadores": [
+    {
+      "id": "pob_log",
+      "nombre": "Población total",
+      "dominio": "demografia_territorio",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "dens_log",
+      "nombre": "Densidad poblacional",
+      "dominio": "demografia_territorio",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "pct_rural",
+      "nombre": "Población rural",
+      "dominio": "demografia_territorio",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "ind_envej",
+      "nombre": "Índice de envejecimiento",
+      "dominio": "demografia_territorio",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "pct_indig",
+      "nombre": "Población indígena",
+      "dominio": "demografia_territorio",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "pct_narp",
+      "nombre": "Población negra, afrocolombiana, raizal y palenquera",
+      "dominio": "demografia_territorio",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "var_interc",
+      "nombre": "Variación intercensal 2005-2018",
+      "dominio": "demografia_territorio",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "fijo:2018"
+    },
+    {
+      "id": "pct_sinap",
+      "nombre": "Área en el Sistema Nacional de Áreas Protegidas",
+      "dominio": "demografia_territorio",
+      "uso": [
+        "entrada"
+      ],
+      "anio": "rezago:2"
+    },
+    {
+      "id": "ipm",
+      "nombre": "Índice de pobreza multidimensional (censo 2018)",
+      "dominio": "pobreza_vivienda",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "fijo:2018"
+    },
+    {
+      "id": "nbi_hacin",
+      "nombre": "NBI hacinamiento crítico (censo 2018)",
+      "dominio": "pobreza_vivienda",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "fijo:2018"
+    },
+    {
+      "id": "nbi_viv",
+      "nombre": "NBI vivienda inadecuada (censo 2018)",
+      "dominio": "pobreza_vivienda",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "fijo:2018"
+    },
+    {
+      "id": "def_cuant",
+      "nombre": "Déficit cuantitativo de vivienda (censo 2018)",
+      "dominio": "pobreza_vivienda",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "fijo:2018"
+    },
+    {
+      "id": "def_cual",
+      "nombre": "Déficit cualitativo de vivienda (censo 2018)",
+      "dominio": "pobreza_vivienda",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "fijo:2018"
+    },
+    {
+      "id": "sisben_ab",
+      "nombre": "Personas en Sisbén IV grupos A y B",
+      "dominio": "pobreza_vivienda",
+      "uso": [
+        "entrada"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "cob_media",
+      "nombre": "Cobertura neta en educación media",
+      "dominio": "educacion",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "desercion",
+      "nombre": "Deserción intraanual (transición a once)",
+      "dominio": "educacion",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "cob_sup",
+      "nombre": "Cobertura en educación superior",
+      "dominio": "educacion",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "transito_sup",
+      "nombre": "Tránsito inmediato a la educación superior",
+      "dominio": "educacion",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "saber_mat",
+      "nombre": "Puntaje promedio Saber 11 matemáticas",
+      "dominio": "educacion",
+      "uso": [
+        "validacion"
+      ],
+      "anio": "rezago:2"
+    },
+    {
+      "id": "cob_subsid",
+      "nombre": "Cobertura del régimen subsidiado",
+      "dominio": "salud",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "vac_penta",
+      "nombre": "Cobertura de vacunación pentavalente <1 año",
+      "dominio": "salud",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "ctrl_prenat",
+      "nombre": "Nacidos vivos con 4 o más controles prenatales",
+      "dominio": "salud",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "fec_adol",
+      "nombre": "Fecundidad en mujeres de 15 a 19 años",
+      "dominio": "salud",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "bajo_peso",
+      "nombre": "Nacidos vivos con bajo peso al nacer",
+      "dominio": "salud",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "parto_inst",
+      "nombre": "Partos atendidos por personal calificado",
+      "dominio": "salud",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "internet",
+      "nombre": "Penetración de internet fijo",
+      "dominio": "servicios_conectividad",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "acued",
+      "nombre": "Cobertura de acueducto (censo 2018)",
+      "dominio": "servicios_conectividad",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "fijo:2018"
+    },
+    {
+      "id": "alcant",
+      "nombre": "Cobertura de alcantarillado (censo 2018)",
+      "dominio": "servicios_conectividad",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "fijo:2018"
+    },
+    {
+      "id": "energia",
+      "nombre": "Cobertura de energía eléctrica",
+      "dominio": "servicios_conectividad",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "va_pc_log",
+      "nombre": "Valor agregado per cápita",
+      "dominio": "economia",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "rezago:1"
+    },
+    {
+      "id": "va_prim",
+      "nombre": "Valor agregado de actividades primarias",
+      "dominio": "economia",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "rezago:1"
+    },
+    {
+      "id": "va_sec",
+      "nombre": "Valor agregado de actividades secundarias",
+      "dominio": "economia",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "rezago:1"
+    },
+    {
+      "id": "contrib_pc",
+      "nombre": "Afiliados al régimen contributivo",
+      "dominio": "economia",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "avaluo_pc_log",
+      "nombre": "Avalúo catastral per cápita",
+      "dominio": "economia",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "dep_transf",
+      "nombre": "Dependencia de las transferencias",
+      "dominio": "fiscal_institucional",
+      "uso": [
+        "entrada"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "dep_transf_calc",
+      "nombre": "Transferencias nacionales sobre ingresos totales",
+      "dominio": "fiscal_institucional",
+      "uso": [
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "trib_pc_log",
+      "nombre": "Ingresos tributarios per cápita",
+      "dominio": "fiscal_institucional",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "regalias_pc_log",
+      "nombre": "Regalías per cápita",
+      "dominio": "fiscal_institucional",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "inv_pc_log",
+      "nombre": "Inversión (gastos de capital) per cápita",
+      "dominio": "fiscal_institucional",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "vict_ocurr_pc",
+      "nombre": "Hechos victimizantes por ocurrencia",
+      "dominio": "conflicto",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "vict_ubic_pc",
+      "nombre": "Víctimas ubicadas",
+      "dominio": "conflicto",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "ref"
+    },
+    {
+      "id": "coca_area",
+      "nombre": "Cultivos de coca",
+      "dominio": "conflicto",
+      "uso": [
+        "entrada",
+        "temporal"
+      ],
+      "anio": "rezago:1"
+    }
+  ],
+  "parametros": {
+    "datos": {
+      "anio_referencia": 2023,
+      "anios_sensibilidad": [
+        2022,
+        2024
+      ],
+      "cobertura_min_indicador": 0.9,
+      "max_faltantes_municipio": 0.12
+    },
+    "preparacion": {
+      "winsorizar": {
+        "activo": true,
+        "inferior": 0.01,
+        "superior": 0.99
+      },
+      "escalado": "estandar",
+      "ponderacion": "dominio",
+      "pca_bloque_varianza": 0.8,
+      "imputacion": "iterativa",
+      "knn_vecinos": 10,
+      "iterativa_max_iter": 15
+    },
+    "clustering": {
+      "entrada": "pca",
+      "pca_varianza": 0.8,
+      "k_min": 2,
+      "k_max": 10,
+      "algoritmos": [
+        "kmeans",
+        "gmm",
+        "ward"
+      ],
+      "kmeans_n_init": 20,
+      "gmm_n_init": 5,
+      "gmm_covarianza": "full",
+      "hdbscan_min_cluster_size": [
+        10,
+        15,
+        20,
+        30,
+        50
+      ],
+      "hdbscan_min_samples": 5,
+      "gap_referencias": 20,
+      "modelo_final": "gmm",
+      "umbral_frontera": 0.7,
+      "umbral_estabilidad_individual": 0.7
+    },
+    "estabilidad": {
+      "n_remuestreos": 50,
+      "fraccion_submuestra": 0.8,
+      "umbral_estable": 0.75,
+      "ruido_tamano_nivel": 0.3,
+      "ruido_tamano_replicas": 50,
+      "referencia_nula_replicas": 10
+    },
+    "sensibilidad": {
+      "pob_min_ciudad_grande": 250000,
+      "pac_umbral_inferior": 0.1,
+      "pac_umbral_superior": 0.9
+    },
+    "interpretacion": {
+      "n_representativos": 5,
+      "n_similares": 10,
+      "arbol_profundidad": 4,
+      "rf_arboles": 300,
+      "cv_folds": 5
+    },
+    "espacial": {
+      "permutaciones": 999,
+      "alfa": 0.05
+    },
+    "temporal": {
+      "anio_base": 2019,
+      "anio_final": 2023
+    },
+    "umap": {
+      "n_vecinos": 30,
+      "min_dist": 0.3
+    }
+  },
+  "fuentes": {
+    "terridata": {
+      "fuente": "terridata",
+      "url": "https://terridata.dnp.gov.co/assets/docs/txt/dimensiones/TerriData.txt.zip",
+      "archivo": "TerriData.txt.zip",
+      "version": "2026-08-07",
+      "tamano": 191610206,
+      "sha256": "b40f3c32572130de844d412c16c1accf657e44d81017de9c3a0dfef393331b6a",
+      "etag": "\"4f8343e8a426dd1:0\"",
+      "descargado_en": "2026-10-12T02:36:04+00:00"
+    },
+    "divipola": {
+      "fuente": "divipola",
+      "url": "https://www.datos.gov.co/resource/gdxc-w37w.json",
+      "archivo": "gdxc-w37w.csv",
+      "version": "2025-01-24",
+      "tamano": 71895,
+      "sha256": "16ca3a2d2838faaf2a48ececeb99b63a72e59c0d39afcb6ae87d081add58f6ab",
+      "etag": null,
+      "descargado_en": "2026-10-12T02:36:32+00:00"
+    },
+    "dnp_tipologias": {
+      "fuente": "dnp_tipologias",
+      "url": "https://colaboracion.dnp.gov.co/CDT/Desarrollo%20Territorial/2026_Descentral%C3%ADzacion/01_ResultadosTipologias2026.xlsx",
+      "archivo": "ResultadosTipologias2026.xlsx",
+      "version": "2026-06-18",
+      "tamano": 1386512,
+      "sha256": "20f602065a120fa354dc1d6fdf72e16335eee73b2776e1e09cdb910545ec139e",
+      "etag": "\"{98587F39-9F44-402F-98FB-46C41C33B313},6\"",
+      "descargado_en": "2026-10-12T02:38:44+00:00"
+    },
+    "geo_app": {
+      "fuente": "geo_app",
+      "url": "https://data.humdata.org/dataset/50ea7fee-f9af-45a7-8a52-abb9c790a0b6/resource/32fba556-0109-4d1c-84cb-c8abddf7775b/download/col-administrative-divisions-shapefiles.zip",
+      "archivo": "col-administrative-divisions-shapefiles.zip",
+      "version": "2021-03-25",
+      "tamano": 116983271,
+      "sha256": "46a86d9cddf4724d931fe99b1c22859c473ea3a58fb8b2071e64e1062eee4bfa",
+      "etag": "\"c8a416676f05c902355cf9553d757475-14\"",
+      "descargado_en": "2026-10-12T02:38:51+00:00"
+    },
+    "mgn": {
+      "fuente": "mgn",
+      "url": "https://geoportal.dane.gov.co/descargas/mgn_2025/MGN2025_MPIO_GRAFICO.zip",
+      "archivo": "MGN2025_MPIO_GRAFICO.zip",
+      "version": "2026-03-26",
+      "tamano": 71576494,
+      "sha256": "a3c01393059be8f2947de5e0a828faa4c7a43119819a667a8124854340bc141f",
+      "etag": "\"69c493e8-4442bae\"",
+      "descargado_en": "2026-10-12T02:38:58+00:00"
+    }
+  },
+  "codigo": {
+    "version_paquete": "0.1.0",
+    "huella_codigo": "ccc835dc58b44a7b6c7dac65ddf4911350383bd34a5cc2db8fe9dfd0a624bdc9",
+    "commit_git": "8225c3a81f46f9b48f0c546997838938edfef994"
+  },
+  "huella_ejecucion": "c7a9262e074e4d8065869a2730209d1f395ef895d27b48177767804f9bb98432",
+  "entorno": {
+    "python": "3.12.13",
+    "plataforma": "Windows-11-10.0.26200-SP0"
+  },
+  "artefactos_sha256": {
+    "acuerdo_algoritmos.csv": "894610b6f77c2b5e88bbf27908cf046fe15d2a738a5d48894e8a3c4aa0182316",
+    "acuerdo_algoritmos_k_interno.csv": "0c0df4b4cdd5ae1fed2e45f4a3358192cdbcd61bc09bced69ce762ace9292919",
+    "alternativas.parquet": "8057b7e35b1ecec799a103dfe5c3633a1f9591a94f953deed419e60b2c551444",
+    "anios_dato.parquet": "d49b8c7798580ac61602fb188bcd22e1c285124ced9feb08dea0b391933e2059",
+    "asignaciones.csv": "7ce85576ef4f38078b9221e200ac404b18e94c6c32e23f39e1ac8f168316ec42",
+    "asignaciones.parquet": "38f4acf5d17a47ecdb2aefc417812af0b581632524a5be5bb407cdd510f97b0c",
+    "asignaciones_base.parquet": "443ce8d62cb26c3ef77baad72873a45e7de45fd59836a067c5b30e87f8361014",
+    "cluster_resumen.json": "3c36e454f304a6ed9382f573f1147caa3a86598fbfa8f8e3f91ebdeb49737657",
+    "decision_k.csv": "717b582a4a41fd9bb61d26b8177fcf4375983af9b56b243a11698b9afd573f52",
+    "decision_k_detalle.csv": "fc8e103390447a70e4fff9401700cb34eb6e87da2957d8c176d5f95c17b4d488",
+    "decision_k_interna.csv": "249c54654a87ac4a0d62ca57b33193ef79ab805cded641cbe1e7bff75d230985",
+    "distribucion_departamentos.csv": "31bb6418937050259402a9be15d5034078acc9141660ef9bdda2d8f71ea0860b",
+    "distribucion_regiones.csv": "0cf57ae301bb94edec38f1acd29525a5e2c11232b49b868630d4b3e4639bc272",
+    "entrada.parquet": "596f34e06460dab8954160c2e08502465f1e4a0e5b75350d05aa863f6aa5aad7",
+    "espacial_local.parquet": "5cbcd52d464511833e0d8fd08c4bd49a9e2fcebde5ceea5305211104f39a769d",
+    "espacial_moran_tipos.csv": "3bad6c7aaaefa4d8183206742d6ac03ad3e7c9b61ad0304441c7e37fe79f02a6",
+    "espacial_restringido.parquet": "6d74461d193cd49fe4844ecd53fc3e16465b6248463528bdc0f5056230dc9615",
+    "estabilidad.csv": "705880cc3c0d0e64e8f37034e7fb000fa8b8f45cd1f4fcf8952f1cc4b7bf4b62",
+    "estabilidad_jaccard.csv": "22cfe828c4f204dbfe1412b2008f75da66e95d6c8926121148046b4493ffe852",
+    "estabilidad_por_tamano.csv": "78506db6d26b41b9596470b9193fd20d58b09e17142513fa7828f501e89246f1",
+    "estabilidad_resumen.json": "1082a8cc7c6bfcfe4058a065b195d6a308925035473cc39505b0d2b952ab9c6b",
+    "excluidos.csv": "69fe76d3e0902d2668c783021c8a09fb702b2974ee2a2b50d737129cd948e311",
+    "externo_dnp_tabla.csv": "fa715ce9613b291f753843fc7c4bc94fc967ba9679506809e546d4464205b17d",
+    "externo_ruralidad_tabla.csv": "2b07ad4816ca2fa5595a7f2de5b9b0cb5c989097cc3fcfa9d3df307133f7955a",
+    "faltantes.json": "ac4b8c8e199e5aae7e6434b49ecf04078fc1a0b4730852cfdd950e654287d5c0",
+    "features_resumen.json": "63578538fe9429a485d1860a56c95ae5963892c8fd668eeff0d3eb727e75ae5b",
+    "gap.csv": "6beec201d5c3dfadd710340db69d329bc0b6692258c3cfa1d0f61d6b27f21f28",
+    "hdbscan.csv": "d4011d7ef1eb46665b07fa36a6e13dabe8658d201d29a4ed1fca158fd7e4ce2e",
+    "imputado.parquet": "eff442ccc22f00f19ea8306a6c5bb095182b3752378732870e32fa08df076caa",
+    "indicadores.csv": "b36817f591f456c52f24e6bd1ad5e3b11e6bfe76aef3936baa51fc510eb04a83",
+    "jaccard_modelo_final.csv": "44f56babcdbf45ae42989fe73aed72237fe7a0abecafe4146afb7f8184cc65a7",
+    "migracion_sin_conflicto.csv": "df9703eceeeb552503f0425fff615a718a510d681e63185d1e9a438f6aacbf16",
+    "municipios.parquet": "f3e80610f6167504e9f646ab523684f66a4bea0c9f677605dbf5cf025fb5c4d1",
+    "nombres_tipos.csv": "f829f4be093fc4771f9156a45b18371834a9c4b9533be91ca865f5652dab2c48",
+    "pca_cargas.csv": "48309a866f5c5fe37e82b92352649a75bd85ade185273f224d8b54a6857330a4",
+    "pca_scores.parquet": "f715b2565a8d1fc02cb9916c949100b1062382853306f9eadfcffde5f6e4c55b",
+    "pca_varianza.csv": "bc3c3c53f630ffdc5ecb4d0a24101fe2d18b715bcb5f1bc46e392ea6c8f86e73",
+    "perfil_resumen.json": "b6de61b9ef5215f6e4c89312b0e55c766b42947a143e833e0f6b51ad9188681e",
+    "perfiles_valores.csv": "7f938fdc1946afdad30bd2436d3156fe3a787970197a91c6f1f9e0fe437f4ebd",
+    "perfiles_z.csv": "360f872dd3645d8bd363ad96f873d440f43e803c27308928db7d23d035a61f72",
+    "pesos_ponderacion.csv": "2a3c8ca7ea803a3e4d0d3f14da7e03aa66ec181881202cdf9c119e195fa4dcb3",
+    "referencia_nula.csv": "51f12071e4cc1f81043efce6bc96b534893387966f7519b09accad29e9f75334",
+    "representativos.csv": "94ae3493b3e2e9ea7e0b950fdb84144e7d3f82b61fad16ea5a6166a5a9feeb49",
+    "ruido_por_tamano.csv": "4b45c606f4365a4f1ee9b91257b6d368509d640b9798afba16576e921f9569ef",
+    "seleccion_k.csv": "6e9da56c1f8e0d740c32af174c34fbff9da221500c7b72ad9414125d510aed78",
+    "sensibilidad.csv": "57bca178cf1283117ef37c90ee0cfbd7a0012573f00858cd3a2ba763bd6c32d4",
+    "sensibilidad_etiquetas.parquet": "b53be289c8cc39730c368ed4e104462356d3e8e365c9cb7b559e2d1949ff5a91",
+    "similares.csv": "89f339e8ad4abc24a2b025ba5531f1b3ba756f6cf90a2036946811ee7f40ed3b",
+    "sustituto_arbol.txt": "0996d4f4193768aceeaba2e16b289593d91f93f1e4511065813d8df19848eed0",
+    "sustituto_importancias.csv": "af61b695c3df191e3239cb9d4c8d58c58c34e292c6ec933cd5b8030d2a70c803",
+    "tamanos.csv": "a1b274859f93e24b2f334d815f6e52e41010bb9b2e0a01b40f1c19188f4c22e3",
+    "umap.parquet": "55772e51ca8b8479d833ea50babc6089d932d6e936a5e3a404e611b335a7c5d6",
+    "validacion_features.json": "5fb176413bd56be01f55481a744d96566eb6a0a1f1385c7dec777b107e9267be",
+    "validacion_saber_mat.csv": "c0033c71b32712a223590cd396f2ee420d77d8ad5aed60a49fea809d1b204189",
+    "valores.parquet": "88cfe87a7cb77089941d256a6b97763192bd24e158b7f641048491b656d6099f",
+    "vecinos.csv": "590e5f23ae5755af336c417d73fd47362c2f00c15775966a1ae0f45aa88a5c66",
+    "x.parquet": "ccd685db57a96f37b69b90f53059f92128df9816b6d8ab53eecde992a71247ea",
+    "z.parquet": "6df6305940e4cc9fa658c89896bcc29c6663b76d21da3539debcc4576343b7a5"
+  }
+}

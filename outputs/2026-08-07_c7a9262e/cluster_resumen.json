@@ -1,0 +1,10 @@
+{
+  "entrada": "pca",
+  "n_componentes_pca": 15,
+  "varianza_pc1": 0.27648311725861413,
+  "k_por_criterios_internos": 3,
+  "k_gap": 9,
+  "k_bic_gmm": 4,
+  "silhouette_max": 0.1925034842674536,
+  "hdbscan_ruido_min_pct": 87.90909090909092
+}

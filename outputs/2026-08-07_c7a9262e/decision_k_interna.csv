@@ -1,0 +1,10 @@
+k,rango_compuesto,grupo_minimo_ok,estable
+3,2.0,True,True
+2,2.111111111111111,True,True
+6,3.7777777777777772,True,True
+4,4.333333333333333,True,True
+5,4.666666666666667,True,True
+7,6.333333333333333,True,True
+9,6.777777777777779,True,True
+8,7.111111111111111,True,True
+10,7.888888888888889,False,True

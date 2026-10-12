@@ -15,3 +15,6 @@ __pycache__/
 .ruff_cache/
 .ipynb_checkpoints/
 .DS_Store
+
+# Configuración local del editor/agente
+.claude/

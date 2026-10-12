@@ -1,0 +1,188 @@
+{
+  "quintil_poblacion": {
+    "tabla": [
+      {
+        "quintil_poblacion": "Q1 (menor)",
+        "municipios": 220,
+        "con_faltantes": 61,
+        "faltantes_medios": 0.37727272727272726,
+        "pct_con_faltantes": 27.7
+      },
+      {
+        "quintil_poblacion": "Q2",
+        "municipios": 220,
+        "con_faltantes": 9,
+        "faltantes_medios": 0.1,
+        "pct_con_faltantes": 4.1
+      },
+      {
+        "quintil_poblacion": "Q3",
+        "municipios": 220,
+        "con_faltantes": 7,
+        "faltantes_medios": 0.11363636363636363,
+        "pct_con_faltantes": 3.2
+      },
+      {
+        "quintil_poblacion": "Q4",
+        "municipios": 220,
+        "con_faltantes": 11,
+        "faltantes_medios": 0.13636363636363635,
+        "pct_con_faltantes": 5.0
+      },
+      {
+        "quintil_poblacion": "Q5 (mayor)",
+        "municipios": 220,
+        "con_faltantes": 5,
+        "faltantes_medios": 0.06363636363636363,
+        "pct_con_faltantes": 2.3
+      }
+    ],
+    "chi2_p": 8.254693220949688e-28
+  },
+  "cat_ruralidad": {
+    "tabla": [
+      {
+        "cat_ruralidad": "Ciudades y aglomeraciones",
+        "municipios": 121,
+        "con_faltantes": 3,
+        "faltantes_medios": 0.09917355371900827,
+        "pct_con_faltantes": 2.5
+      },
+      {
+        "cat_ruralidad": "Intermedio",
+        "municipios": 368,
+        "con_faltantes": 16,
+        "faltantes_medios": 0.08967391304347826,
+        "pct_con_faltantes": 4.3
+      },
+      {
+        "cat_ruralidad": "Rural",
+        "municipios": 373,
+        "con_faltantes": 36,
+        "faltantes_medios": 0.16085790884718498,
+        "pct_con_faltantes": 9.7
+      },
+      {
+        "cat_ruralidad": "Rural disperso",
+        "municipios": 238,
+        "con_faltantes": 38,
+        "faltantes_medios": 0.28991596638655465,
+        "pct_con_faltantes": 16.0
+      }
+    ],
+    "chi2_p": 6.224272140592296e-07
+  },
+  "region": {
+    "tabla": [
+      {
+        "region": "Bogotá",
+        "municipios": 1,
+        "con_faltantes": 0,
+        "faltantes_medios": 0.0,
+        "pct_con_faltantes": 0.0
+      },
+      {
+        "region": "Caribe",
+        "municipios": 196,
+        "con_faltantes": 11,
+        "faltantes_medios": 0.14795918367346939,
+        "pct_con_faltantes": 5.6
+      },
+      {
+        "region": "Centro Oriente",
+        "municipios": 366,
+        "con_faltantes": 51,
+        "faltantes_medios": 0.1830601092896175,
+        "pct_con_faltantes": 13.9
+      },
+      {
+        "region": "Centro Sur",
+        "municipios": 115,
+        "con_faltantes": 8,
+        "faltantes_medios": 0.23478260869565218,
+        "pct_con_faltantes": 7.0
+      },
+      {
+        "region": "Eje Cafetero",
+        "municipios": 178,
+        "con_faltantes": 10,
+        "faltantes_medios": 0.1404494382022472,
+        "pct_con_faltantes": 5.6
+      },
+      {
+        "region": "Llanos",
+        "municipios": 66,
+        "con_faltantes": 7,
+        "faltantes_medios": 0.10606060606060606,
+        "pct_con_faltantes": 10.6
+      },
+      {
+        "region": "Pacífico",
+        "municipios": 178,
+        "con_faltantes": 6,
+        "faltantes_medios": 0.10674157303370786,
+        "pct_con_faltantes": 3.4
+      }
+    ],
+    "chi2_p": 0.0003623147647676506
+  },
+  "por_indicador": {
+    "tabla": [
+      {
+        "index": "bajo_peso",
+        "faltantes": 46,
+        "pct_en_Q1": 93.5
+      },
+      {
+        "index": "regalias_pc_log",
+        "faltantes": 23,
+        "pct_en_Q1": 26.1
+      },
+      {
+        "index": "trib_pc_log",
+        "faltantes": 23,
+        "pct_en_Q1": 26.1
+      },
+      {
+        "index": "inv_pc_log",
+        "faltantes": 23,
+        "pct_en_Q1": 26.1
+      },
+      {
+        "index": "dep_transf",
+        "faltantes": 23,
+        "pct_en_Q1": 26.1
+      },
+      {
+        "index": "fec_adol",
+        "faltantes": 14,
+        "pct_en_Q1": 100.0
+      },
+      {
+        "index": "desercion",
+        "faltantes": 9,
+        "pct_en_Q1": 0.0
+      },
+      {
+        "index": "cob_media",
+        "faltantes": 8,
+        "pct_en_Q1": 0.0
+      },
+      {
+        "index": "pct_sinap",
+        "faltantes": 2,
+        "pct_en_Q1": 50.0
+      },
+      {
+        "index": "sisben_ab",
+        "faltantes": 2,
+        "pct_en_Q1": 0.0
+      },
+      {
+        "index": "transito_sup",
+        "faltantes": 1,
+        "pct_en_Q1": 100.0
+      }
+    ]
+  }
+}

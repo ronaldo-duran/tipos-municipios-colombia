@@ -1,0 +1,209 @@
+{
+  "tamanos": [
+    {
+      "tipo": "A",
+      "municipios": 650,
+      "poblacion": 8496700.0,
+      "poblacion_mediana": 9318.0,
+      "pct_municipios": 59.1,
+      "pct_poblacion": 16.3
+    },
+    {
+      "tipo": "B",
+      "municipios": 230,
+      "poblacion": 6799633.0,
+      "poblacion_mediana": 18846.5,
+      "pct_municipios": 20.9,
+      "pct_poblacion": 13.1
+    },
+    {
+      "tipo": "C",
+      "municipios": 220,
+      "poblacion": 36716040.0,
+      "poblacion_mediana": 44385.5,
+      "pct_municipios": 20.0,
+      "pct_poblacion": 70.6
+    }
+  ],
+  "nombres": [
+    {
+      "tipo": "A",
+      "nombre": "Rural con población mayor y baja incidencia del conflicto",
+      "descripcion": "Municipios mayoritariamente rurales y pequeños, con población más envejecida que el promedio, baja incidencia reciente de hechos victimizantes, menor déficit cuantitativo de vivienda y mayor peso de las regalías en sus ingresos. Predominan en la región Centro Oriente.",
+      "nombre_manual": true
+    },
+    {
+      "tipo": "B",
+      "nombre": "Rural joven con alta incidencia del conflicto y brechas de vivienda",
+      "descripcion": "Municipios rurales con población joven, alta incidencia de hechos victimizantes y de víctimas ubicadas, mayor pobreza multidimensional y déficit cuantitativo de vivienda (censo 2018), menor cobertura de acueducto y mayor dependencia de las transferencias. Se concentran en el Pacífico, los Llanos y el sur del Caribe.",
+      "nombre_manual": true
+    },
+    {
+      "tipo": "C",
+      "nombre": "Urbano e intermedio con mayor formalidad y cobertura de servicios",
+      "descripcion": "Ciudades y municipios intermedios: menor población rural, mayor densidad, más cobertura de alcantarillado, acueducto e internet, más afiliación al régimen contributivo y a la educación superior, y menor peso de las actividades primarias. Agrupa al 20 % de los municipios y al 71 % de la población.",
+      "nombre_manual": true
+    }
+  ],
+  "descriptores": [
+    {
+      "tipo": "A",
+      "rasgos": "más regalías per cápita; menos área en el sistema nacional de áreas protegidas; menos víctimas ubicadas; menos déficit cuantitativo de vivienda (censo 2018)",
+      "firma": "regalias_pc_log+,pct_sinap-,vict_ubic_pc-"
+    },
+    {
+      "tipo": "B",
+      "rasgos": "más hechos victimizantes por ocurrencia; más déficit cuantitativo de vivienda (censo 2018); menos índice de envejecimiento; más índice de pobreza multidimensional (censo 2018)",
+      "firma": "vict_ocurr_pc+,def_cuant+,ind_envej-"
+    },
+    {
+      "tipo": "C",
+      "rasgos": "más cobertura de alcantarillado (censo 2018); menos población rural; más penetración de internet fijo; menos índice de pobreza multidimensional (censo 2018)",
+      "firma": "alcant+,pct_rural-,internet+"
+    }
+  ],
+  "sustituto_arbol": {
+    "exactitud_cv_media": 0.8672727272727274,
+    "exactitud_cv_sd": 0.014488524955008403,
+    "profundidad": 4
+  },
+  "sustituto_bosque": {
+    "exactitud_cv_media": 0.9436363636363636,
+    "exactitud_cv_sd": 0.02143604749554833
+  },
+  "importancia_por_dominio": {
+    "educacion": 0.0959,
+    "economia": 0.0772,
+    "conflicto": 0.0578,
+    "demografia_territorio": 0.0371,
+    "servicios_conectividad": 0.0154,
+    "salud": 0.0134,
+    "pobreza_vivienda": 0.0132,
+    "fiscal_institucional": 0.0007
+  },
+  "externo_dnp": {
+    "n": 1100,
+    "n_ordinal": 1094,
+    "cramer_v": 0.49332397046031007,
+    "kruskal_referencia_por_tipo": {
+      "H": 347.16246749041443,
+      "p": 4.1174470462871694e-76,
+      "epsilon2": 0.3176234835227945,
+      "n": 1094
+    },
+    "kendall_tau_b": -0.495881789000759,
+    "kendall_p": 1.014200207415005e-77,
+    "gamma": -0.7238373878854896,
+    "orden_tipos_usado": [
+      "B",
+      "A",
+      "C"
+    ],
+    "mediana_referencia_por_tipo": {
+      "A": "4",
+      "B": "4",
+      "C": "2"
+    }
+  },
+  "externo_ruralidad": {
+    "n": 1100,
+    "n_ordinal": 1100,
+    "cramer_v": 0.45702836744238523,
+    "kruskal_referencia_por_tipo": {
+      "H": 334.6951804481555,
+      "p": 2.0982875600745636e-73,
+      "epsilon2": 0.30454520513935895,
+      "n": 1100
+    },
+    "kendall_tau_b": -0.47360123249859293,
+    "kendall_p": 6.051236981551736e-71,
+    "gamma": -0.6969286980982082,
+    "orden_tipos_usado": [
+      "B",
+      "A",
+      "C"
+    ],
+    "mediana_referencia_por_tipo": {
+      "A": "Rural",
+      "B": "Rural",
+      "C": "Intermedio"
+    },
+    "ari": 0.11514474295130465,
+    "ami": 0.1752504489641597
+  },
+  "validacion_externa": {
+    "saber_mat": {
+      "nombre": "Puntaje promedio Saber 11 matemáticas",
+      "anio": [
+        2022
+      ],
+      "eta2": 0.21625072059318848,
+      "epsilon2": 0.19224168378085021,
+      "p": 1.3259232909777212e-46,
+      "n": 1100
+    }
+  },
+  "espacial": {
+    "moran_pc1": {
+      "moran_I": 0.6689774937844619,
+      "moran_p": 0.001,
+      "z": 38.20835890277785
+    },
+    "fuente_vecindad": "MGN 2025 (DANE), versión 2026-03-26",
+    "pares_vecinos": 3225,
+    "moran_por_tipo": [
+      {
+        "tipo": "A",
+        "moran_I": 0.36325666633561365,
+        "moran_esperado": -0.0009099181073703367,
+        "moran_p": 0.001,
+        "pares_mismo_tipo_obs": 1349.0,
+        "pares_mismo_tipo_esperados": 1126.2772772772773,
+        "join_count_p": 0.001
+      },
+      {
+        "tipo": "B",
+        "moran_I": 0.5993259449940977,
+        "moran_esperado": -0.0009099181073703367,
+        "moran_p": 0.001,
+        "pares_mismo_tipo_obs": 428.0,
+        "pares_mismo_tipo_esperados": 140.76176176176176,
+        "join_count_p": 0.001
+      },
+      {
+        "tipo": "C",
+        "moran_I": 0.24428813560841067,
+        "moran_esperado": -0.0009099181073703367,
+        "moran_p": 0.001,
+        "pares_mismo_tipo_obs": 273.0,
+        "pares_mismo_tipo_esperados": 128.26226226226225,
+        "join_count_p": 0.001
+      }
+    ],
+    "vecinos_mismo_tipo": {
+      "observado": 0.6495425690736695,
+      "esperado_al_azar": 0.43289256198347115
+    },
+    "lisa_tipo_propio": {
+      "no significativo": 731,
+      "núcleo (rodeado de su tipo)": 313,
+      "aislado (rodeado de otros tipos)": 56
+    },
+    "ward_restringido_vs_base": {
+      "ari": 0.0992235979022136,
+      "ami": 0.1017378473017873,
+      "tamanos": {
+        "0": 532,
+        "1": 303,
+        "2": 265
+      },
+      "n_regiones": 3,
+      "tamano_mediano": 303.0
+    },
+    "moran_prob_max": {
+      "moran_I": 0.07283693553838576,
+      "moran_p": 0.001,
+      "z": 4.05840496583399
+    }
+  }
+}

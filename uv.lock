@@ -2170,6 +2170,7 @@ dependencies = [
     { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "shapely" },
     { name = "streamlit" },
+    { name = "threadpoolctl" },
     { name = "truststore" },
     { name = "umap-learn" },
 ]
@@ -2198,6 +2199,7 @@ requires-dist = [
     { name = "scipy", specifier = ">=1.11" },
     { name = "shapely", specifier = ">=2.0" },
     { name = "streamlit", specifier = ">=1.35" },
+    { name = "threadpoolctl", specifier = ">=3.1" },
     { name = "truststore", specifier = ">=0.10.4" },
     { name = "umap-learn", specifier = ">=0.5.6" },
 ]

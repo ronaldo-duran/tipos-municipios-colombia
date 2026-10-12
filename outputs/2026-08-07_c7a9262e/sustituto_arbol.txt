@@ -1,0 +1,43 @@
+|--- Cultivos de coca <= -0.27
+|   |--- Cobertura en educación superior <= 0.15
+|   |   |--- Valor agregado de actividades secundarias <= 0.70
+|   |   |   |--- Población indígena <= 2.69
+|   |   |   |   |--- class: A
+|   |   |   |--- Población indígena >  2.69
+|   |   |   |   |--- class: B
+|   |   |--- Valor agregado de actividades secundarias >  0.70
+|   |   |   |--- Cobertura del régimen subsidiado <= 0.79
+|   |   |   |   |--- class: C
+|   |   |   |--- Cobertura del régimen subsidiado >  0.79
+|   |   |   |   |--- class: B
+|   |--- Cobertura en educación superior >  0.15
+|   |   |--- NBI vivienda inadecuada (censo 2018) <= 1.53
+|   |   |   |--- Densidad poblacional <= -1.12
+|   |   |   |   |--- class: B
+|   |   |   |--- Densidad poblacional >  -1.12
+|   |   |   |   |--- class: C
+|   |   |--- NBI vivienda inadecuada (censo 2018) >  1.53
+|   |   |   |--- class: B
+|--- Cultivos de coca >  -0.27
+|   |--- Índice de pobreza multidimensional (censo 2018) <= -0.16
+|   |   |--- Cultivos de coca <= 0.38
+|   |   |   |--- Cobertura en educación superior <= -0.31
+|   |   |   |   |--- class: A
+|   |   |   |--- Cobertura en educación superior >  -0.31
+|   |   |   |   |--- class: C
+|   |   |--- Cultivos de coca >  0.38
+|   |   |   |--- Cobertura en educación superior <= 1.49
+|   |   |   |   |--- class: B
+|   |   |   |--- Cobertura en educación superior >  1.49
+|   |   |   |   |--- class: C
+|   |--- Índice de pobreza multidimensional (censo 2018) >  -0.16
+|   |   |--- Hechos victimizantes por ocurrencia <= 0.94
+|   |   |   |--- Población indígena <= -0.35
+|   |   |   |   |--- class: A
+|   |   |   |--- Población indígena >  -0.35
+|   |   |   |   |--- class: B
+|   |   |--- Hechos victimizantes por ocurrencia >  0.94
+|   |   |   |--- Tránsito inmediato a la educación superior <= 2.34
+|   |   |   |   |--- class: B
+|   |   |   |--- Tránsito inmediato a la educación superior >  2.34
+|   |   |   |   |--- class: C

@@ -1,0 +1,38 @@
+{
+  "chequeos": [
+    {
+      "nombre": "Cobertura mínima por indicador",
+      "estado": "ok",
+      "detalle": "0 indicadores bajo 90%: {}",
+      "datos": {}
+    },
+    {
+      "nombre": "Rangos plausibles por indicador",
+      "estado": "ok",
+      "detalle": "0 valores fuera de rango en 0 indicadores (se conservan y se reportan)",
+      "datos": {
+        "fuera_de_rango": {}
+      }
+    },
+    {
+      "nombre": "Matriz final: sin faltantes",
+      "estado": "ok",
+      "detalle": "0 NaN",
+      "datos": {}
+    },
+    {
+      "nombre": "Matriz final: valores finitos",
+      "estado": "ok",
+      "detalle": "",
+      "datos": {}
+    },
+    {
+      "nombre": "Matriz final: municipios únicos",
+      "estado": "ok",
+      "detalle": "",
+      "datos": {}
+    }
+  ],
+  "n_errores": 0,
+  "n_avisos": 0
+}

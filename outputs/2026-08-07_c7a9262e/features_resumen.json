@@ -1,0 +1,83 @@
+{
+  "anio_referencia": 2023,
+  "municipios_incluidos": 1100,
+  "municipios_excluidos": 2,
+  "indicadores": 40,
+  "indicadores_descartados": {},
+  "celdas_imputadas": 174,
+  "municipios_con_imputacion": 93,
+  "casos_completos_ref": 1007,
+  "varianza_por_dominio": {
+    "conflicto": 1.0,
+    "demografia_territorio": 1.0,
+    "economia": 1.0,
+    "educacion": 1.0,
+    "fiscal_institucional": 1.0,
+    "pobreza_vivienda": 1.0,
+    "salud": 1.0,
+    "servicios_conectividad": 1.0
+  },
+  "imputacion": {
+    "pct_sinap": {
+      "imputados": 2,
+      "pct": 0.18
+    },
+    "sisben_ab": {
+      "imputados": 2,
+      "pct": 0.18
+    },
+    "cob_media": {
+      "imputados": 8,
+      "pct": 0.73
+    },
+    "desercion": {
+      "imputados": 9,
+      "pct": 0.82
+    },
+    "transito_sup": {
+      "imputados": 1,
+      "pct": 0.09
+    },
+    "fec_adol": {
+      "imputados": 14,
+      "pct": 1.27
+    },
+    "bajo_peso": {
+      "imputados": 46,
+      "pct": 4.18
+    },
+    "dep_transf": {
+      "imputados": 23,
+      "pct": 2.09
+    },
+    "trib_pc_log": {
+      "imputados": 23,
+      "pct": 2.09
+    },
+    "regalias_pc_log": {
+      "imputados": 23,
+      "pct": 2.09
+    },
+    "inv_pc_log": {
+      "imputados": 23,
+      "pct": 2.09
+    }
+  },
+  "parametros": {
+    "anio": 2023,
+    "uso": "entrada",
+    "quitar_dominios": [],
+    "excluir_codigos": 0,
+    "winsorizar": {
+      "activo": true,
+      "inferior": 0.01,
+      "superior": 0.99
+    },
+    "escalado": "estandar",
+    "ponderacion": "dominio",
+    "pca_bloque_varianza": 0.8,
+    "imputacion": "iterativa",
+    "knn_vecinos": 10,
+    "iterativa_max_iter": 15
+  }
+}

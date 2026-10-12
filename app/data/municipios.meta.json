@@ -5,5 +5,6 @@
   "version_fuente": "2021-03-25",
   "sha256_fuente": "46a86d9cddf4724d931fe99b1c22859c473ea3a58fb8b2071e64e1062eee4bfa",
   "poligonos": 1122,
-  "tolerancia_simplificacion_grados": 0.004
+  "tolerancia_simplificacion_grados": 0.004,
+  "orientacion": "anillos exteriores en sentido horario (d3-geo / plotly)"
 }

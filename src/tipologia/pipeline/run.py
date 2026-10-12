@@ -6,6 +6,7 @@ import logging
 from pathlib import Path
 
 import pandas as pd
+from threadpoolctl import threadpool_limits
 
 from tipologia.clustering.models import acuerdo, ajustar, barrido_hdbscan, gap_statistic, seleccion_k
 from tipologia.clustering.reduce import entrada_clustering, umap_2d
@@ -16,15 +17,15 @@ from tipologia.features.build import patron_faltantes
 from tipologia.features.impute import resumen_imputacion
 from tipologia.features.prepare import cargar_datos_base, preparar
 from tipologia.features.transform import varianza_por_dominio
+from tipologia.pipeline.artefactos import ETAPAS_EJECUCION, dir_ejecucion, etapas_completadas, marcar_etapa
 from tipologia.pipeline.io import guardar_json
 
 log = logging.getLogger(__name__)
 
 
 def dir_trabajo(cfg: Config) -> Path:
-    d = cfg.ruta("processed") / "trabajo"
-    d.mkdir(parents=True, exist_ok=True)
-    return d
+    """Directorio de la ejecución actual: outputs/<fecha de TerriData>_<hash datos+config+código>."""
+    return dir_ejecucion(cfg)
 
 
 def etapa_features(cfg: Config, destino: Path) -> dict:
@@ -126,20 +127,51 @@ def etapa_cluster(cfg: Config, destino: Path) -> dict:
     return resumen
 
 
-def ejecutar_etapa(etapa: str, cfg: Config, forzar: bool = False, offline: bool = False) -> int:
-    destino = dir_trabajo(cfg)
+def _funcion_etapa(etapa: str):
     if etapa == "features":
-        etapa_features(cfg, destino)
-        return 0
+        return etapa_features
     if etapa == "cluster":
-        etapa_cluster(cfg, destino)
-        return 0
+        return etapa_cluster
     if etapa == "stability":
         from tipologia.pipeline.etapa_estabilidad import etapa_estabilidad
-        etapa_estabilidad(cfg, destino)
-        return 0
+        return etapa_estabilidad
     if etapa == "profile":
         from tipologia.pipeline.etapa_perfil import etapa_perfil
-        etapa_perfil(cfg, destino)
+        return etapa_perfil
+    if etapa == "temporal":
+        from tipologia.pipeline.etapa_temporal import etapa_temporal
+        return etapa_temporal
+    if etapa == "export":
+        from tipologia.pipeline.etapa_export import etapa_export
+        return etapa_export
+    raise ValueError(f"Etapa desconocida: {etapa}")
+
+
+def ejecutar_etapa(etapa: str, cfg: Config, forzar: bool = False, offline: bool = False) -> int:
+    """Ejecuta una etapa (o todo el pipeline) sobre el directorio de la ejecución actual.
+
+    Idempotente: si la etapa ya se completó para estos mismos datos, configuración y código, no recomputa
+    (salvo --forzar). Como el nombre del directorio incluye el hash de todo eso, datos nuevos producen
+    una ejecución nueva.
+    """
+    destino = dir_trabajo(cfg)
+    log.info("Ejecución: %s", destino.name)
+    # Un solo hilo en BLAS/OpenMP: las reducciones paralelas cambian el orden de las sumas y con él el
+    # último bit de algunos resultados. Con un hilo, la reejecución da artefactos idénticos byte a byte.
+    with threadpool_limits(limits=1):
+        return _ejecutar(etapa, cfg, destino, forzar)
+
+
+def _ejecutar(etapa: str, cfg: Config, destino: Path, forzar: bool) -> int:
+    etapas = [*ETAPAS_EJECUCION, "export"] if etapa == "pipeline" else [etapa]
+    hechas = etapas_completadas(destino)
+    if etapa == "pipeline" and not forzar and all(e in hechas for e in etapas):
+        log.info("Sin datos, configuración ni código nuevos: la ejecución %s ya está completa; no recomputo", destino.name)
         return 0
-    raise NotImplementedError(f"Etapa {etapa} todavía no implementada")
+    for e in etapas:
+        if e in hechas and not forzar and etapa == "pipeline":
+            log.info("Etapa %s ya completada; la salto", e)
+            continue
+        _funcion_etapa(e)(cfg, destino)
+        marcar_etapa(destino, e)
+    return 0

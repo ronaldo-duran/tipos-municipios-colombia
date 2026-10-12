@@ -1,0 +1,81 @@
+grupo,tipo,municipios,pct_del_grupo,pct_del_tipo
+Amazonas,B,2,100.0,0.87
+Antioquia,A,64,51.2,9.85
+Antioquia,B,24,19.2,10.43
+Antioquia,C,37,29.6,16.82
+Arauca,A,1,14.29,0.15
+Arauca,B,5,71.43,2.17
+Arauca,C,1,14.29,0.45
+Atlántico,A,12,52.17,1.85
+Atlántico,C,11,47.83,5.0
+Bogotá,C,1,100.0,0.45
+Bolívar,A,21,45.65,3.23
+Bolívar,B,20,43.48,8.7
+Bolívar,C,5,10.87,2.27
+Boyacá,A,105,85.37,16.15
+Boyacá,B,3,2.44,1.3
+Boyacá,C,15,12.2,6.82
+Caldas,A,19,70.37,2.92
+Caldas,B,2,7.41,0.87
+Caldas,C,6,22.22,2.73
+Caquetá,A,2,12.5,0.31
+Caquetá,B,13,81.25,5.65
+Caquetá,C,1,6.25,0.45
+Casanare,A,17,89.47,2.62
+Casanare,B,1,5.26,0.43
+Casanare,C,1,5.26,0.45
+Cauca,A,11,26.19,1.69
+Cauca,B,24,57.14,10.43
+Cauca,C,7,16.67,3.18
+Cesar,A,16,64.0,2.46
+Cesar,B,2,8.0,0.87
+Cesar,C,7,28.0,3.18
+Chocó,B,29,96.67,12.61
+Chocó,C,1,3.33,0.45
+Cundinamarca,A,82,70.69,12.62
+Cundinamarca,C,34,29.31,15.45
+Córdoba,A,12,40.0,1.85
+Córdoba,B,14,46.67,6.09
+Córdoba,C,4,13.33,1.82
+Guainía,B,1,100.0,0.43
+Guaviare,B,4,100.0,1.74
+Huila,A,29,78.38,4.46
+Huila,B,1,2.7,0.43
+Huila,C,7,18.92,3.18
+La Guajira,A,6,40.0,0.92
+La Guajira,B,5,33.33,2.17
+La Guajira,C,4,26.67,1.82
+Magdalena,A,25,83.33,3.85
+Magdalena,B,3,10.0,1.3
+Magdalena,C,2,6.67,0.91
+Meta,A,14,48.28,2.15
+Meta,B,8,27.59,3.48
+Meta,C,7,24.14,3.18
+Nariño,A,30,46.88,4.62
+Nariño,B,33,51.56,14.35
+Nariño,C,1,1.56,0.45
+Norte de Santander,A,24,60.0,3.69
+Norte de Santander,B,11,27.5,4.78
+Norte de Santander,C,5,12.5,2.27
+Putumayo,A,2,15.38,0.31
+Putumayo,B,9,69.23,3.91
+Putumayo,C,2,15.38,0.91
+Quindío,A,6,50.0,0.92
+Quindío,C,6,50.0,2.73
+Risaralda,A,7,50.0,1.08
+Risaralda,B,2,14.29,0.87
+Risaralda,C,5,35.71,2.27
+San Andrés y Providencia,A,1,100.0,0.15
+Santander,A,72,82.76,11.08
+Santander,C,15,17.24,6.82
+Sucre,A,22,84.62,3.38
+Sucre,B,1,3.85,0.43
+Sucre,C,3,11.54,1.36
+Tolima,A,32,68.09,4.92
+Tolima,B,3,6.38,1.3
+Tolima,C,12,25.53,5.45
+Valle del Cauca,A,18,42.86,2.77
+Valle del Cauca,B,4,9.52,1.74
+Valle del Cauca,C,20,47.62,9.09
+Vaupés,B,2,100.0,0.87
+Vichada,B,4,100.0,1.74
